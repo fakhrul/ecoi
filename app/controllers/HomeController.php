@@ -79,6 +79,12 @@ class HomeController extends BaseController {
 			);
             //var_dump($userdata); exit(); 
 			// attempt to do the login // Input::get('remember_me')
+
+			// $hash_password =  Hash::make(Input::get('password'));	
+			// Session::flash('message', $hash_password);					
+			// return Redirect::to('login');
+			
+
 			if (Auth::attempt($userdata)) {
                 if(!empty(Auth::user()->channel_id)) { 
                     $channel = Channel::find(Auth::user()->channel_id);
