@@ -1,0 +1,149 @@
+
+<?php $__env->startSection('page-header'); ?>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$("#back_to_branch").click(function() {
+			$("#loading_panel").addClass("loading-show");
+		});
+		
+	});
+</script>
+<h3>View Branch</h3>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+	<div class="clearfix">
+		<div class="visible-md-block visible-lg-block">
+			<a id="back_to_branch" type="button" class="btn btn-primary" href="<?php echo URL::to('branch'); ?>"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Back</a>
+            <?php if (allowed('branch.edit')): ?>
+		  	<a type="button" class="btn btn-primary" href="<?php echo URL::to('branch/' . $list->id) .'/edit'; ?>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
+            <?php endif; ?>
+			<div style="margin-top:8px;"></div>
+		</div>
+
+		<div class="visible-xs-block visible-sm-block dropdown">
+			<button type="button" data-toggle="dropdown" class="btn btn-primary"><span class="glyphicon glyphicon-list-alt"></span> Action <span class="caret"></span></button>
+			<div style="margin-top:8px;"></div>
+			<ul class="dropdown-menu" role="menu">
+				<li><a id="back_to_branch" href="<?php echo URL::to('branch'); ?>"><span class="glyphicon glyphicon-arrow-left"></span> Back</a></li>
+                <?php if (allowed('branch.edit')): ?>
+				<li><a href="<?php echo URL::to('branch/' . $list->id) .'/edit'; ?>"><span class="glyphicon glyphicon-pencil"></span> Edit</a></li>
+                <?php endif; ?>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Details</h3>
+		</div>
+		<div class="panel-body">
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Channel</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $list->channel->name; ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $list->name; ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Type</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $list->type; ?></p>
+					</div>
+				</div>
+				<?php /* <div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $list->email; ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Contact No.</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $list->contact_no; ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Start Date</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $list->start_date; ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">End Date</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $list->end_date; ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Description</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $list->desc; ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">SMS Reload MSISDN</label>
+					<div class="col-sm-5">
+						<p class="form-control-static">
+							<?php foreach($list->msisdn as $msisdn): ?>
+								<?php echo $msisdn->msisdn; ?><br>
+							<?php endforeach; ?>
+						</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Enable Pinless Reload Low Balance Notification</label>
+					<div class="col-sm-5">
+						<p class="form-control-static">
+							<?php if($list->pinless_reload_low_balance_notification == "y"): ?>
+								Yes
+							<?php else: ?>
+								No
+							<?php endif; ?>
+						</p>
+					</div>
+				</div>
+				<?php if($list->pinless_reload_low_balance_notification == "y"): ?>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Low Level Amount</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo number_format($list->pinless_reload_low_level_amount); ?></p>
+					</div>
+				</div>
+				<?php endif; ?>
+                */ ?>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Created At</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $list->created_at; ?> (<?php echo $list->createUser->name; ?>)</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Updated At</label>
+					<div class="col-sm-5">
+						<p class="form-control-static">
+							<?php echo $list->updated_at; ?> 
+							<?php if($list->updated_by !=""): ?>
+								(<?php echo $list->updateUser->name; ?>)
+							<?php endif; ?>
+						</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="inputEmail3" class="col-sm-2 control-label">Deleted At</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $list->deleted_at; ?></p>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

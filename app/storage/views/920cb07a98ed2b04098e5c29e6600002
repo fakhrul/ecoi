@@ -1,0 +1,49 @@
+<?php $__env->startSection('page-header'); ?>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#select_branch").click(function() {
+			$("#loading_panel").addClass("loading-show");
+		});
+	});
+</script>
+<h3>Select Branch/Project</h3>
+<?php $__env->stopSection(); ?>
+<?
+define("PAGETITLE", " | Select Branch");
+
+?>
+<?php $__env->startSection('content'); ?>
+
+<!-- if there are creation errors, they will show here -->
+<?php if ($errors->all()): ?>
+<div class="alert alert-danger"><?php echo HTML::ul($errors->all()); ?></div>
+<?php endif; ?>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Details</h3>
+	</div>
+	<div class="panel-body">
+		<?php echo Form::open(array('url' => 'branch/select', 'class' => 'form-horizontal', 'role' => 'form')); ?>
+
+
+		<div class="form-group">
+			<?php echo Form::label('branch_id', 'Branch/Project', array('class' => 'col-sm-2 control-label')); ?>
+			<div class="col-sm-3">		
+				<?php echo Form::select('branch_id', $branches, Session::get('branch_id'), array('class' => 'form-control')); ?>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				 <?php /* <a type="button" class="btn btn-default" href="<?php echo URL::to('branch'); ?>">Back</a>	*/ ?>	
+				<?php echo Form::submit('Submit', array('id' => 'select_branch', 'class' => 'btn btn-primary')); ?>
+			</div>
+		</div>
+
+		<?php echo Form::close(); ?>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

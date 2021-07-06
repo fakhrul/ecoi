@@ -1,0 +1,83 @@
+
+<?php $__env->startSection('page-header'); ?>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$("#delete_user, #restore_user, #back_to_user").click(function() {
+			$("#loading_panel").addClass("loading-show");
+		});
+		
+	});
+</script>
+<h3>View User</h3>
+<?php $__env->stopSection(); ?>
+<? define("PAGETITLE", " | View User"); ?>
+<?php $__env->startSection('content'); ?>
+    <!-- will be used to show any messages -->
+    <?php if (Session::has('message')): ?> 
+        <div class="alert alert-info"><?php echo Session::get('message'); ?></div>
+    <?php endif; ?>
+    <?php if (Session::has('error')): ?> 
+        <div class="alert alert-info"><?php echo Session::get('error'); ?></div>
+    <?php endif; ?>
+    <?php if ($errors->all()): ?>
+      <div class="alert alert-danger"><?php echo HTML::ul($errors->all()); ?></div>
+    <?php endif; ?>
+
+	<div class="clearfix">
+		<div class="visible-md-block visible-lg-block">
+			<?php echo Form::open(array('route' => array('admin.groups.destroy', $groups->id), 'method' => 'delete')); ?>
+		 		<a id="back_to_user" type="button" class="btn btn-primary" href="<?php echo URL::to('admin/groups'); ?>"><span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Back</a>			
+			<?php if (!$groups->deleted_at): ?>		
+		  		<a type="button" class="btn btn-primary" href="<?php echo URL::to('admin/groups/' . $groups->id) .'/edit'; ?>"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
+			<?php endif; ?>
+			<?php echo Form::close(); ?>		  	
+	  	
+			<div style="margin-top:8px;"></div>
+		</div>
+
+		<div class="visible-xs-block visible-sm-block dropdown">
+			<?php echo Form::open(array('route' => array('admin.groups.destroy', $groups->id), 'method' => 'delete')); ?>			
+				<button type="button" data-toggle="dropdown" class="btn btn-primary"><span class="glyphicon glyphicon-list-alt"></span> Action <span class="caret"></span></button>
+				<div style="margin-top:8px;"></div>
+				<ul class="dropdown-menu" role="menu">
+					<li><a id="back_to_user" href="<?php echo URL::to('admin/groups'); ?>"><span class="glyphicon glyphicon-arrow-left"></span> Back</a></li>
+				<?php if (!$groups->deleted_at): ?>	
+					<li><a href="<?php echo URL::to('admin/groups/' . $groups->id) .'/edit'; ?>"><span class="glyphicon glyphicon-pencil"></span> Edit</a></li>	
+				<?php endif; ?>				
+				</ul>
+			<?php echo Form::close(); ?>				
+		</div>
+	</div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Details</h3>
+		</div>
+		<div class="panel-body">
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">Name</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $groups->name; ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="description" class="col-sm-2 control-label">Description</label>
+					<div class="col-sm-5">
+						<p class="form-control-static"><?php echo $groups->description; ?></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="permission" class="col-sm-2 control-label">Permission</label>
+					<div class="col-sm-5">
+						<?php foreach($groups->permissions as $key => $value): ?>
+						<p class="form-control-static"><?php echo $value->description; ?></p>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.admin_default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

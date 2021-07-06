@@ -1,0 +1,83 @@
+
+<?php $__env->startSection('page-header'); ?>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$("#edit_profile").click(function() {
+			$("#loading_panel").addClass("loading-show");
+		});
+
+	});
+</script>
+<h3>Edit Profile</h3>
+
+<?php $__env->stopSection(); ?>
+<?
+define("PAGETITLE", " | Edit Profile");
+
+?>
+<?php $__env->startSection('content'); ?>
+
+<?php if (Session::has('message')): ?>
+<div class="alert alert-info"><?php echo Session::get('message'); ?></div>
+<?php endif; ?>
+
+<!-- if there are creation errors, they will show here -->
+<?php if ($errors->all()): ?>
+<div class="alert alert-danger"><?php echo HTML::ul($errors->all()); ?></div>
+<?php endif; ?>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Details</h3>
+	</div>
+	<div class="panel-body">
+		<?php echo Form::model($user, array('route' => array('profile.update'), 'method' => 'PUT', 'class' => 'form-horizontal')); ?>
+
+		<div class="form-group">
+			<?php echo Form::label('username', 'Username', array('class' => 'col-sm-2 control-label')); ?>
+			<div class="col-sm-5">		
+				<?php echo Form::text('username', Input::old('username'), array('class' => 'form-control', 'readonly')); ?>
+			</div>	
+		</div>
+
+		<div class="form-group">
+			<?php echo Form::label('name', 'Name *', array('class' => 'col-sm-2 control-label')); ?>
+			<div class="col-sm-5">		
+				<?php echo Form::text('name', Input::old('name'), array('class' => 'form-control')); ?>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<?php echo Form::label('email', 'Email', array('class' => 'col-sm-2 control-label')); ?>
+			<div class="col-sm-5">		
+				<?php echo Form::text('email', Input::old('email'), array('class' => 'form-control')); ?>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<?php echo Form::label('password', 'Password', array('class' => 'col-sm-2 control-label')); ?>
+			<div class="col-sm-5">		
+				<?php echo Form::password('password', array('class' => 'form-control')); ?>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<?php echo Form::label('password_confirmation', 'Password Confirmation', array('class' => 'col-sm-2 control-label')); ?>
+			<div class="col-sm-5">		
+				<?php echo Form::password('password_confirmation', array('class' => 'form-control')); ?>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				 <button id="edit_profile" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span>&nbsp;Submit</button>		 
+			</div>
+		</div>
+
+		<?php echo Form::close(); ?>
+	</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

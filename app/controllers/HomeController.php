@@ -1,0 +1,231 @@
+<?php
+
+class HomeController extends BaseController {
+	/*
+	|--------------------------------------------------------------------------
+	| Default Home Controller
+	|--------------------------------------------------------------------------
+	|
+	| You may wish to use controllers instead of, or in addition to, Closure
+	| based routes. That's great! Here is an example controller method to
+	| get you started. To route to this controller, just add the route:
+	|
+	|	Route::get('/', 'HomeController@showWelcome');
+	|
+	*/
+
+	public function __construct() {
+		$this->beforeFilter('csrf', array('on'=>'post'));
+	}	
+
+	public function showHome(){
+		$summary = RtuConfig::where('idrut_config', 1)->first();
+		$max_daily_rainfall = TimeLog::orderBy('RF1_DAILY', 'desc')->orderBy('LOG_DATE', 'desc')->orderBy('LOG_TIME', 'desc')->first();
+		//echo "<pre>".print_r($max_daily_rainfall,true)."</pre>"; exit();
+        $timelog = TimeLog::orderBy('LOG_DATE', 'desc')->orderBy('LOG_TIME', 'desc')->first();
+		//echo "<pre>".print_r($timelog,true)."</pre>"; exit();
+		
+		if(!empty(Auth::user()->channel_id)) { 
+			$breadcrumbs = array('Home' => 'home', 'Dashboard' => 'dashboard');	
+			// show the view and pass the nerd to it
+			return View::make('home')->with('breadcrumbs',$breadcrumbs)->with('timelog', $timelog)->with('max_daily_rainfall', $max_daily_rainfall)->with('summary', $summary);
+		}else{
+			$breadcrumbs = array('Home' => 'admin/home', 'Dashboard' => 'admin/dashboard');	
+			// show the view and pass the nerd to it
+			return View::make('admin.home')->with('breadcrumbs',$breadcrumbs)->with('timelog', $timelog)->with('max_daily_rainfall', $max_daily_rainfall)->with('summary', $summary);
+        }
+	}
+
+	public function showAdminHome(){
+		$summary = RtuConfig::where('idrut_config', 1)->first();
+		$max_daily_rainfall = TimeLog::orderBy('RF1_DAILY', 'desc')->orderBy('LOG_DATE', 'desc')->orderBy('LOG_TIME', 'desc')->first();
+		//echo "<pre>".print_r($max_daily_rainfall,true)."</pre>"; exit();
+        $timelog = TimeLog::orderBy('LOG_DATE', 'desc')->orderBy('LOG_TIME', 'desc')->first();
+		//echo "<pre>".print_r($timelog,true)."</pre>"; exit();
+		if(!empty($timelog)) {
+			$breadcrumbs = array('Home' => 'admin/home', 'Dashboard' => 'admin/dashboard');	
+			// show the view and pass the nerd to it
+			return View::make('admin.home')->with('breadcrumbs',$breadcrumbs)->with('timelog', $timelog)->with('max_daily_rainfall', $max_daily_rainfall)->with('summary', $summary);
+		}else{
+			return Redirect::to('admin/users');
+		}
+	}
+
+	public function showLogin(){
+		// show the form
+		return View::make('login');
+	}
+
+	public function doLogin(){
+		// validate the info, create rules for the inputs
+		$rules = array(
+			'username'    => 'required', // make sure the email is an actual email
+			'password'	  => 'required' // password can only be alphanumeric and has to be greater than 6 characters
+			);
+            
+		// run the validation rules on the inputs from the form
+		$validator = Validator::make(Input::all(), $rules);
+
+		// if the validator fails, redirect back to the form
+		if ($validator->fails()) {
+			return Redirect::to('login')
+				->withErrors($validator) // send back all errors to the login form
+				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
+		}else{
+            // create our user data for the authentication
+			$userdata = array(
+				'username' 	=> Input::get('username'),
+				'password' 	=> Input::get('password')
+			);
+            //var_dump($userdata); exit(); 
+			// attempt to do the login // Input::get('remember_me')
+			if (Auth::attempt($userdata)) {
+                if(!empty(Auth::user()->channel_id)) { 
+                    $channel = Channel::find(Auth::user()->channel_id);
+                    if($channel) {
+						if (Auth::user()->branches()->count() > 1) {
+							return $this->showHome();
+						}else {
+							$branch = Auth::user()->branches()->first();
+							Session::put('branch_id', $branch->id);
+							Session::put('branch_name', $branch->name);
+							return $this->showHome();
+						}
+					}else{
+						Session::flash('message', 'Account has been suspended.');					
+						return Redirect::to('login');		
+					}
+                }else { 
+                    //return Redirect::to('/admin/product_type/select');
+                    //return Redirect::intended('admin/home');  
+                    return $this->showAdminHome(); 
+                }
+            }else{ 
+				// validation not successful, send back to form	
+				Session::flash('message', 'Invalid Username or Password');					
+				return Redirect::to('login');
+            }
+        }
+    }
+
+	public function doLogout(){
+
+		Auth::logout(); // log the user out of our application
+		Session::flush();
+		return Redirect::to('login'); // redirect the user to the login screen
+	}
+
+	public function checkMigrateLogin($username,$password) {
+
+		$user = User::where('username', '=', $username)->where('password', '=', 'BLANK')->first();
+		
+		if (isset($user)) {
+			$params = "username=".$username."&password=".$password;
+			$ch = curl_init(); /// initialize a curl session
+			curl_setopt($ch, CURLOPT_URL,"http://192.168.4.40/selfcare/checkLogin.php");
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,0);
+			curl_setopt($ch, CURLOPT_HEADER, 0); /// header control
+			curl_setopt($ch, CURLOPT_POST, 1); // tell curl to do a POST, not a GET
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $params); /// the query string goes here as set in the variable above
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); /// allows it to set the response in a variable - $xyz
+			curl_setopt($ch, CURLOPT_REFERER, "http://www.hdls.com.my/");
+			$response = curl_exec ($ch); /// execute the curl session and store the response in the variable $xyz
+			curl_close ($ch);
+
+			if (substr($response,0,1) == '1') { return true; }
+			else { return false; }
+
+		}else { return false; }
+	}
+
+	public function editProfile(){
+		// get the nerd
+		$user = Auth::user();
+
+		$breadcrumbs = array('Profile' => '/profile/edit', 'Edit Profile' => '/profile/edit');			
+
+		if(!empty(Auth::user()->channel_id)) { 
+			return View::make('profile.edit')
+			->with('breadcrumbs',$breadcrumbs)			
+			->with('user', $user);
+		}
+		else { 		
+			return View::make('admin.profile.edit')
+			->with('breadcrumbs',$breadcrumbs)			
+			->with('user', $user);
+		}
+	}
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function updateProfile(){
+		// validate
+		// read more on validation at http://laravel.com/docs/validation
+		$rules = array(
+			'name'       => 'required',
+			'email' 	=> 'email',
+			'password'  =>'AlphaNum|Between:8,16|Confirmed',
+			'password_confirmation'=>'AlphaNum|Between:8,16'
+
+			);
+		$validator = Validator::make(Input::all(), $rules);
+
+		// process the login
+		if ($validator->fails()) {
+			return Redirect::to('profile/edit')
+			->withErrors($validator)
+			->withInput(Input::except('password'));
+		} else {
+			// store
+			$user 				= Auth::user();
+			$user->name       	= Input::get('name');
+			$user->email 		= Input::get('email');
+			$user->updated_by	= Auth::user()->id;				
+
+			if (Input::get('password')){
+				$user->password = Hash::make(Input::get('password'));
+			}
+
+			$user->save();
+
+			// redirect
+			Session::flash('message', 'Profile Updated');
+			
+			if(!empty(Auth::user()->channel_id)) { 
+				return Redirect::to('admin/profile/edit');
+			}else { 
+                return Redirect::to('admin/profile/edit'); 
+            }			
+		}
+	}
+
+	public function showBranch(){
+		$breadcrumbs = array('Select Branch' => '/branch/select');
+
+		if(substr(URL::previous(),-5) != 'login' and substr(URL::previous(),-19) != 'product_type/select' and substr(URL::previous(),-13) != 'branch/select') {
+			Session::put('url.intended', URL::previous());
+		}
+		
+		$branches = Auth::user()->branches()->lists('name','branch_id');
+
+		return View::make('branch.select')->with('branches',$branches)->with('breadcrumbs',$breadcrumbs);
+	}	
+
+
+	public function selectBranch(){
+		Session::put('branch_id', Input::get('branch_id'));
+		$branch = Branch::find(Input::get('branch_id'));
+		Session::put('branch_name', $branch->name);
+
+		if( Session::get('product_type_id') == '1')
+			return Redirect::intended('prepaidorder');
+		else
+			return Redirect::intended(Session::get('product_type').'/registration');
+
+	}	
+
+}

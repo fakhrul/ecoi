@@ -1,0 +1,7 @@
+
+<?php $__env->startSection('content'); ?>
+
+<div class="alert alert-danger">Something went wrong, kindly contact nazer@hdls.com.my for further assistance.</div>
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make(!empty(Auth::user()->channel_id)? 'layouts.default':'layouts.admin_default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

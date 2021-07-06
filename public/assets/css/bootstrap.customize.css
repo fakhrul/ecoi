@@ -1,0 +1,282 @@
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.navbar-white {
+  background-color: #ffffff;
+  border-color: #e7e7e7;
+}
+.navbar-white .navbar-brand {
+  color: #777;
+}
+.navbar-white .navbar-brand:hover,
+.navbar-white .navbar-brand:focus {
+  color: #5e5e5e;
+  background-color: transparent;
+}
+.navbar-white .navbar-text {
+  color: #777;
+}
+.navbar-white .navbar-nav > li > a {
+  color: #777;
+}
+.navbar-white .navbar-nav > li > a:hover,
+.navbar-white .navbar-nav > li > a:focus {
+  color: #333;
+  background-color: transparent;
+}
+.navbar-white .navbar-nav > .active > a,
+.navbar-white .navbar-nav > .active > a:hover,
+.navbar-white .navbar-nav > .active > a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+.navbar-white .navbar-nav > .disabled > a,
+.navbar-white .navbar-nav > .disabled > a:hover,
+.navbar-white .navbar-nav > .disabled > a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+.navbar-white .navbar-toggle {
+  border-color: #ddd;
+}
+.navbar-white .navbar-toggle:hover,
+.navbar-white .navbar-toggle:focus {
+  background-color: #ddd;
+}
+.navbar-white .navbar-toggle .icon-bar {
+  background-color: #888;
+}
+.navbar-white .navbar-collapse,
+.navbar-white .navbar-form {
+  border-color: #e7e7e7;
+}
+.navbar-white .navbar-nav > .open > a,
+.navbar-white .navbar-nav > .open > a:hover,
+.navbar-white .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+
+.navbar-brand {
+  padding:0px 15px;line-height:48px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 10px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.module-list-inline > div {
+  display:inline-block;
+  width:84px;
+  margin:10px;
+}
+
+.form-control::-moz-placeholder {
+  color: #aaa;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+  color: #aaa;
+}
+.form-control::-webkit-input-placeholder {
+  color: #aaa;
+}
+
+/* Loading panel */
+.loading-backdrop {
+ position: fixed;
+ width: 100%;
+ height: 100%;
+ display: none;
+ top: 0;
+ left: 0;
+ z-index: 1040;
+ opacity: 0;
+ background: rgba(0,0,0,0.5);
+ -webkit-transition: opacity .15s linear;
+ -moz-transition: opacity .15s linear;
+ transition: opacity .15s linear;
+}
+
+.loading{
+ position: fixed;
+ top: 50%;
+ left: 50%;
+ z-index: 2000;
+ display: none;
+ transform: translate(-50%, -50%);
+ -webkit-transform: translate(-50%, -50%);
+ -ms-transform: translate(-50%, -50%);
+}
+
+.loading-content{
+ color: #fff;
+ background: #000;
+ position: relative;
+ border-radius: 4px;
+ margin: 0 auto;
+ padding: 3px 15px;
+ white-space:nowrap;
+}
+
+.loading-show ~ .loading-backdrop {
+ opacity: 1;
+ display: block;
+}
+
+.loading-show {
+ opacity: 1;
+ display: block;
+}
+
+.loading-content-effect .loading-content {
+ -webkit-transition: opacity .15s linear;
+ -moz-transition: opacity .15s linear;
+ transition: opacity .15s linear;
+ opacity: 0;
+}
+
+.loading-show.loading-content-effect .loading-content {
+ -webkit-transition: opacity .15s linear;
+ -moz-transition: opacity .15s linear;
+ transition: opacity .15s linear;
+ opacity: 1;
+}
+
+.panel-subtitles {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #777;
+}
+
+.ecoi_logo_small {
+  width: 198px;
+  height: 77px;
+  margin: -20px auto 11px;
+  padding: 30px 0px;
+  background: url(../images/ecoi_small.png) no-repeat;
+}
+
+.hdls_logo_small {
+  width: 190px;
+  height: 130px;
+  margin: -20px auto 11px;
+  padding: 30px 0px;
+  background: url(../images/hdls_small.png) no-repeat;
+}
+.twims_logo_small {
+  width: 200px;
+  height: 150px;
+  margin: -20px auto 11px;
+  padding: 30px 0px;
+  background: url(../images/pka_small.png) no-repeat;
+}
+.tron_logo {
+  width: 200px;
+  height: 83px;
+  margin: -20px auto 20px;
+  padding: 30px 0px;
+  background: url(../images/tron_logo.png) no-repeat;
+}
+.xiddig_logo {
+  width: 170px;
+  height: 46px;
+  margin: -15px auto 11px;
+  padding: 30px 0px;
+  background: url(../images/xiddig_logo.png) no-repeat;
+}
+.coop_logo {
+  width: 112px;
+  height: 111px;
+  margin: -18px auto 23px;
+  padding: 30px 0px;
+  background: url(../images/coopfon_logo.png) no-repeat scroll 0 0 / 112px 111px;
+}
+.touchdown_logo {
+  width: 200px;
+  height: 100px;
+  margin: -14px auto 20px;
+  padding: 30px 0px;
+  background: url(../images/touchdown_big.gif) no-repeat;
+}
+
+/* login panel */
+.login-form{
+  max-width: 340px;
+  padding: 13px;
+  margin: 0 auto;
+}
+
+.login-panel {
+  max-width: 340px;
+  margin: 0 auto;
+  min-height: 20px;
+  padding: 20px 13px 20px;
+  margin-bottom: 20px;
+  background-color: #f7f7f7;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-panel > .btn{
+  padding: 10px 16px;
+  font-size: 18px;
+  margin-bottom: 0px;
+  border-radius: 6px;
+  line-height: 1.33;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<!--  Mobile Viewport Fix -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<title>
+			<?php $__env->startSection('title'); ?>
+			<?php echo Config::get('app.name'); ?>
+			<?php echo $__env->yieldSection(); ?>
+		</title>
+        
+        <!-- jQuery multisleect -->
+        <link href="<?php echo URL::asset('assets/css/jquery.multiselect.css'); ?>" rel="stylesheet" />
+        
+        <!-- select2 -->
+        <link href="<?php echo URL::asset('assets/css/select2.css'); ?>" rel="stylesheet" />
+        
+        <!-- map here -->
+        <link href="<?php echo URL::asset('assets/css/styleMap.css'); ?>" rel="stylesheet">	
+
+		<!-- CSS -->
+		<link href="<?php echo URL::asset('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">			
+		<!--<link href="<?php echo URL::asset('assets/css/sticky-footer-navbar.css'); ?>" rel="stylesheet">-->
+		<link href="<?php echo URL::asset('assets/css/main.css'); ?>" rel="stylesheet">	
+
+		<link href="<?php echo URL::asset('assets/css/datepicker3.css'); ?>" rel="stylesheet">
+		<link href="<?php echo URL::asset('assets/css/bootstrap.customize.css'); ?>" rel="stylesheet">	
+		<style>    	
+			<?php $__env->startSection('styles'); ?>			
+			<?php echo $__env->yieldSection(); ?>
+		</style>
+
+		<!-- JS -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="<?php echo URL::asset('assets/css/bootstrap.min.js'); ?>"></script>	
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script> <!-- load angular -->
+		<script src="<?php echo URL::asset('assets/js/general.js'); ?>"></script>	
+		<script src="<?php echo URL::asset('assets/js/jquery.blockUI.min.js'); ?>"></script>	
+
+		<script src="<?php echo URL::asset('assets/js/bootstrap-datepicker.js'); ?>"></script>
+		<script src="<?php echo URL::asset('assets/js/payment.js'); ?>"></script>		
+
+		<!-- ANGULAR -->
+		<!-- all angular resources will be loaded from the /public folder -->
+		<!--<script src="js/controllers/mainCtrl.js"></script>
+		<script src="js/services/channelService.js"></script>-->
+        <script src="<?php echo URL::asset('js/app.js'); ?>"></script> <!-- load our application -->
+        
+        <!-- select2 -->
+        <script src="<?php echo URL::asset('assets/js/select2.js'); ?>"></script>
+        
+        <!-- jQuery multisleect -->
+        <script src="<?php echo URL::asset('assets/js/jquery.multiselect.js'); ?>"></script>
+	</head>
+    <body>
+        <?php if(!empty(Auth::user()->channel_id)): ?>
+			<?php echo $__env->make('layouts.header', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?> 
+		<?php else: ?>
+			<?php echo $__env->make('layouts.header_default', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+		<?php endif; ?>
+		<div class="container">
+			<?php if (isset($breadcrumbs)): ?>
+			<ol class="breadcrumb">
+	          	<?php foreach($breadcrumbs as $key => $value): ?>
+	          		<li class="active"><?php echo $key; ?></li>
+	          	<?php endforeach; ?>	          
+			</ol>
+			<?php endif; ?>
+
+			<?php /* 
+			<div class="pull-right" >
+				<strong><?php echo Auth::user()->username; ?></strong>
+				<a class="btn btn-small btn-warning" href="<?php echo URL::to('logout'); ?>">Logout</a>
+			</div>  
+			*/ ?>	
+		
+			<?php $__env->startSection("page-header"); ?>
+  			<h3><?php echo Auth::user()->channel ? Auth::user()->channel->name .' ('. Auth::user()->channel->channel_id .') - '.Session::get('branch_name') : Config::get('app.name'); ?></h3>
+  			<?php echo $__env->yieldSection(); ?>
+
+			<?php echo $__env->yieldContent('content'); ?>
+		</div>	
+		<?php echo $__env->make('layouts.footer', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>		
+    </body>
+</html>

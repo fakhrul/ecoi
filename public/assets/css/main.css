@@ -1,0 +1,199 @@
+
+/*html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  padding-top: 50px;
+  padding-bottom: 100px;
+}
+*/
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  background-color: #f5f5f5;
+}
+
+/*.footer .container {
+  padding-top: 5px;
+}*/
+
+.gsp_logo{
+
+  width: 120px;
+  height: 39px;
+  background: url(../images/gs_logo.png) no-repeat;
+}
+
+.tron_logo{
+  width: 150px;
+  height: 39px;
+  background: url(../images/logo_without_text150.png) no-repeat;
+}
+
+.store_logo{
+  width: 100px;
+  height: 40px;
+  background: url(../images/tron_store_logo.png) no-repeat;
+}
+
+.hdls_logo_small{
+  width: 150px;
+  height: 99px;
+  background: url(../images/hdls.png) no-repeat;
+}
+
+.twims_logo_small{
+  width: 150px;
+  height: 99px;
+  background: url(../images/pka.png) no-repeat;
+}
+
+.ecoi_logo_small {
+  width: 195px;
+  height: 109px;
+  margin: 50px auto 20px;
+  padding: 30px 0px;
+  background: url(../images/ecoi_small.png) no-repeat;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.sort {
+  background: url(../images/sorting.png) no-repeat center right;
+}
+.sort_asc {
+  background: url(../images/sorting_asc.png) no-repeat center right;
+}
+.sort_desc {
+  background: url(../images/sorting_desc.png) no-repeat center right;
+}
+
+.apps-list{
+  padding-left: 0;
+  list-style: none;
+}
+
+.apps-list > li{
+  float: left;
+  width: 120px;
+  height: 100px;
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  cursor: pointer;
+  border: solid 1px #fff;
+}
+
+.apps-list > li:hover{
+  border: solid 1px #e7e7e7;
+}
+
+.apps-list > li > a, .apps-list > li > a:hover{
+  text-decoration: none;
+}
+
+.apps-list > li > a > p{
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 15px;
+  color: #000;
+}
+
+/* start new navbar  0b93ac b9e2e9*/
+.navbar-primary {
+  border-color: #e7e7e7;
+  background-color: #fff;
+}
+
+.navbar-primary .navbar-nav > li > a {
+  color: #555;
+}
+.navbar-primary .navbar-nav > li > a:hover,
+.navbar-primary .navbar-nav > li > a:focus {
+  background-color: #b9e2e9;
+  color: #fff;
+}
+.navbar-primary .navbar-nav > .active > a,
+.navbar-primary .navbar-nav > .active > a:hover,
+.navbar-primary .navbar-nav > .active > a:focus {
+  background-color: #b9e2e9;
+  color: #fff;
+ /* border-bottom: solid 5px #8fc31f; */
+
+}
+
+.navbar-primary .navbar-toggle {
+  /*border-color: #fff;*/
+}
+.navbar-primary .navbar-toggle:hover,
+.navbar-primary .navbar-toggle:focus {
+  background-color: #e7e7e7;
+}
+.navbar-primary .navbar-toggle .icon-bar {
+  background-color: #555;
+}
+
+.navbar-primary .navbar-collapse,
+.navbar-primary .navbar-form {
+  border-color: #e7e7e7;
+}
+.navbar-primary .navbar-nav > .open > a,
+.navbar-primary .navbar-nav > .open > a:hover,
+.navbar-primary .navbar-nav > .open > a:focus {
+  color: #555;
+  background-color: #e7e7e7;
+}
+@media (max-width: 767px) {
+  .navbar-primary .navbar-nav .open .dropdown-menu > li > a {
+    color: #777;
+  }
+  .navbar-primary .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-primary .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #333;
+    background-color: transparent;
+  }
+  .navbar-primary .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-primary .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-primary .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #555;
+    background-color: #e7e7e7;
+  }
+  .navbar-primary .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-primary .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-primary .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #ccc;
+    background-color: transparent;
+  }
+}
+.navbar-primary .navbar-link {
+  color: #777;
+}
+.navbar-primary .navbar-link:hover {
+  color: #333;
+}
+.navbar-primary .btn-link {
+  color: #777;
+}
+.navbar-primary .btn-link:hover,
+.navbar-primary .btn-link:focus {
+  color: #333;
+}
+.navbar-primary .btn-link[disabled]:hover,
+fieldset[disabled] .navbar-primary .btn-link:hover,
+.navbar-primary .btn-link[disabled]:focus,
+fieldset[disabled] .navbar-primary .btn-link:focus {
+  color: #ccc;
+}
+/* end new navbar */
+
+.table-subscription tr td  {
+  border: 0 !important;
+}
+
