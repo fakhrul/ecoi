@@ -45,8 +45,8 @@
 			{{ Form::close() }}    
 			</div>
             <h5 style="text-align: center;">{{ Config::get('app.version'); }}</h5>
-            <h5 style="text-align: center;">Username: superadmin</h5>
-            <h5 style="text-align: center;">Password: Superadmin@123</h5>
+            <!-- <h5 style="text-align: center;">Username: superadmin</h5>
+            <h5 style="text-align: center;">Password: Superadmin@123</h5> -->
 		</div>
 	</div> <!-- /container -->
     <!-- Start of LiveChat (www.livechatinc.com) code

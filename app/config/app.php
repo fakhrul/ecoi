@@ -48,7 +48,7 @@ return array(
     | or any other location as required by the application or its packages.
     */
     
-    'version' => 'V1.0.1',
+    'version' => 'V1.0.2',
     
 	/*
 	|--------------------------------------------------------------------------
