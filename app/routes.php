@@ -24,6 +24,9 @@ Route::group(['prefix' => 'admin'], function() {
 
 	Route::resource('channels', 'AdminChannelController');
 	Route::resource('users', 'AdminUserController');
+	Route::resource('users_super_admin', 'AdminUserSuperAdminController');
+	Route::resource('users_admin', 'AdminUserAdminController');
+	Route::resource('users_normal', 'AdminUserNormalController');
 	Route::resource('brands', 'AdminBrandController');  
 	Route::resource('branch', 'AdminBranchController');	
     Route::resource('station', 'AdminStationController');
@@ -295,9 +298,9 @@ Route::get('denied', array(
 	}
 )); 
 
-Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@showHome'));
+Route::get('/', array('before' => 'auth', 'uses' => 'HomeController@showAdminHome'));
 
-Route::get('home', array('before' => 'auth', 'as' => 'home', 'uses' => 'HomeController@showHome'));
+Route::get('home', array('before' => 'auth', 'as' => 'home', 'uses' => 'HomeController@showAdminHome'));
 
 Route::get('login', array('uses' => 'HomeController@showLogin'));
 

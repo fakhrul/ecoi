@@ -21,22 +21,31 @@
                     </li>
                     <?php echo HTML::clever_menu(array('admin.brands.index','admin.groups.index','admin.users.index'), 'User' ); ?>
                     <ul class="dropdown-menu" role="menu">
-                        <?php echo HTML::clever_link('admin.brands.index', 'Manage Brands' ); ?>
-                        <?php echo HTML::clever_link('admin.groups.index', 'Manage Groups' ); ?>
-                        <?php echo HTML::clever_link('admin.users.index', 'Manage Users' ); ?>
+                        <!-- <?php echo HTML::clever_link('admin.brands.index', 'Manage Brands' ); ?>-->
+                        <!-- <?php echo HTML::clever_link('admin.groups.index', 'Manage Groups' ); ?>  -->
+                        <?php echo HTML::clever_link('admin.channels.index', 'Departments' ); ?>
+                        <?php echo HTML::clever_link('admin.users_super_admin.index', 'Super Admin' ); ?>
+                        <?php echo HTML::clever_link('admin.users_admin.index', 'Admin' ); ?>
+                        <?php echo HTML::clever_link('admin.users_normal.index', 'Normal User' ); ?>
+                        <!-- <?php echo HTML::clever_link('admin.users.index', 'Manage Users' ); ?> -->
                     </ul>
                     </li>
+                    <!-- <?php echo HTML::clever_menu(array('admin.channels.index'), 'Departments' ); ?>
+                    <ul class="dropdown-menu" role="menu">
+                        <?php echo HTML::clever_link('admin.channels.index', 'Manage Departments' ); ?>
+                    </ul>
+                    </li> -->
                     <!-- <?php echo HTML::clever_menu(array('admin.channels.index'), 'Channel' ); ?>
                         <ul class="dropdown-menu" role="menu">
                             <?php echo HTML::clever_link('admin.channels.index', 'Manage Channels' ); ?>
                         </ul>
-                    </li>   
-                    <?php echo HTML::clever_menu(array('admin.branch.index'), 'Branch' ); ?>
+                    </li>    -->
+                    <!-- <?php echo HTML::clever_menu(array('admin.branch.index'), 'Branch' ); ?>
                         <ul class="dropdown-menu" role="menu">
                             <?php echo HTML::clever_link('admin.branch.index', 'Manage Branches' ); ?>
 
                         </ul>
-                    </li> -->
+                    </li>  -->
 
                     <?php /* <li><a class="pull-right btn btn-small btn-warning" href="<?php echo URL::to('logout'); ?>">Logout (<?php echo Auth::user()->username; ?>)</a></li> */ ?>
                     <?php /* <li class="dropdown">

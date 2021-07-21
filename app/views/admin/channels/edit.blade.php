@@ -46,20 +46,20 @@ define("PAGETITLE", " | Edit Channel");
 			{{ Form::model($channel, array('route' => array('admin.channels.update', $channel->id), 'method' => 'PUT', 'class' => 'form-horizontal')) }}
 
 			<div class="form-group">
-				{{ Form::label('channel_id', 'Channel ID', array('class' => 'col-sm-2 control-label')) }}
+				{{ Form::label('channel_id', 'Department Code', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-5">		
 					{{ Form::text('channel_id', $channel->channel_id, array('class' => 'form-control', 'readonly')) }}
 				</div>	
 			</div>
 
 			<div class="form-group">
-				{{ Form::label('name', 'Company Name', array('class' => 'col-sm-2 control-label')) }}
+				{{ Form::label('name', 'Department Name', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-5">		
 					{{ Form::text('name', $channel->name, array('class' => 'form-control')) }}
 				</div>
 			</div>
 
-			<div class="form-group">
+			<!-- <div class="form-group">
 				{{ Form::label('name', 'Company Reg No.', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-5">		
 					{{ Form::text('reg_no', $channel->reg_no, array('class' => 'form-control')) }}
@@ -240,7 +240,7 @@ define("PAGETITLE", " | Edit Channel");
 					{{ Form::text('gps', $channel->gps, array('class' => 'form-control')) }}
 				</div>
 			</div>
-			@endif
+			@endif -->
 
 
 			<div class="form-group">

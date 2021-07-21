@@ -21,22 +21,31 @@
                     </li>
                     {{ HTML::clever_menu(array('admin.brands.index','admin.groups.index','admin.users.index'), 'User' ) }}
                     <ul class="dropdown-menu" role="menu">
-                        {{ HTML::clever_link('admin.brands.index', 'Manage Brands' ) }}
-                        {{ HTML::clever_link('admin.groups.index', 'Manage Groups' ) }}
-                        {{ HTML::clever_link('admin.users.index', 'Manage Users' ) }}
+                        <!-- {{ HTML::clever_link('admin.brands.index', 'Manage Brands' ) }}-->
+                        <!-- {{ HTML::clever_link('admin.groups.index', 'Manage Groups' ) }}  -->
+                        {{ HTML::clever_link('admin.channels.index', 'Departments' ) }}
+                        {{ HTML::clever_link('admin.users_super_admin.index', 'Super Admin' ) }}
+                        {{ HTML::clever_link('admin.users_admin.index', 'Admin' ) }}
+                        {{ HTML::clever_link('admin.users_normal.index', 'Normal User' ) }}
+                        <!-- {{ HTML::clever_link('admin.users.index', 'Manage Users' ) }} -->
                     </ul>
                     </li>
+                    <!-- {{ HTML::clever_menu(array('admin.channels.index'), 'Departments' ) }}
+                    <ul class="dropdown-menu" role="menu">
+                        {{ HTML::clever_link('admin.channels.index', 'Manage Departments' ) }}
+                    </ul>
+                    </li> -->
                     <!-- {{ HTML::clever_menu(array('admin.channels.index'), 'Channel' ) }}
                         <ul class="dropdown-menu" role="menu">
                             {{ HTML::clever_link('admin.channels.index', 'Manage Channels' ) }}
                         </ul>
-                    </li>   
-                    {{ HTML::clever_menu(array('admin.branch.index'), 'Branch' ) }}
+                    </li>    -->
+                    <!-- {{ HTML::clever_menu(array('admin.branch.index'), 'Branch' ) }}
                         <ul class="dropdown-menu" role="menu">
                             {{ HTML::clever_link('admin.branch.index', 'Manage Branches' ) }}
 
                         </ul>
-                    </li> -->
+                    </li>  -->
 
                     {{-- <li><a class="pull-right btn btn-small btn-warning" href="{{ URL::to('logout') }}">Logout ({{ Auth::user()->username }})</a></li> --}}
                     {{-- <li class="dropdown">

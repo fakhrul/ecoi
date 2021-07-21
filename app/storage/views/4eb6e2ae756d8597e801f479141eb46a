@@ -17,7 +17,7 @@
 <?php if ($errors->all()): ?>
 <div class="alert alert-danger"><?php echo HTML::ul($errors->all()); ?></div>
 <?php else: ?>
-Welcome to <?php echo Config::get('app.fullname'); ?> <?php /* Auth::user()->channel ? Auth::user()->channel->name .' - '. Session::get('branch_name') : Config::get('app.fullname') */ ?>
+Welcome to <?php echo Config::get('app.fullname'); ?> <?php /* Auth::user()->name ? Auth::user()->name .' - '. Session::get('branch_name') : Config::get('app.fullname') */ ?>
 <?php endif; ?>
 
 <div class="clearfix">

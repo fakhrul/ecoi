@@ -18,7 +18,7 @@
 @if ($errors->all())
 <div class="alert alert-danger">{{ HTML::ul($errors->all()) }}</div>
 @else
-Welcome to {{ Config::get('app.fullname') }} {{-- Auth::user()->channel ? Auth::user()->channel->name .' - '. Session::get('branch_name') : Config::get('app.fullname') --}}
+Welcome to {{ Config::get('app.fullname') }} {{-- Auth::user()->name ? Auth::user()->name .' - '. Session::get('branch_name') : Config::get('app.fullname') --}}
 @endif
 
 <div class="clearfix">

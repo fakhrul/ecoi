@@ -57,18 +57,18 @@ define("PAGETITLE", " | View Channel");
 		<div class="panel-body">
 			<form class="form-horizontal" role="form">
 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">Channel ID</label>
+					<label for="inputEmail3" class="col-sm-2 control-label">Department Code</label>
 					<div class="col-sm-5">
 						<p class="form-control-static">{{$channel->channel_id}}</p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="inputEmail3" class="col-sm-2 control-label">Company Name</label>
+					<label for="inputEmail3" class="col-sm-2 control-label">Department Name</label>
 					<div class="col-sm-5">
 						<p class="form-control-static">{{$channel->name}}</p>
 					</div>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Company Reg No.</label>
 					<div class="col-sm-5">
 						<p class="form-control-static">{{$channel->reg_no}}</p>
@@ -175,7 +175,7 @@ define("PAGETITLE", " | View Channel");
 					<div class="col-sm-5">
 						<p class="form-control-static">{{$channel->bank_no}}</p>
 					</div>
-				</div>
+				</div> -->
 				<!--<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Recurring Commissions</label>
 					<div class="col-sm-5">
@@ -194,19 +194,19 @@ define("PAGETITLE", " | View Channel");
 						<p class="form-control-static">{{number_format($channel->consign_amount,2)}}</p>
 					</div>
 				</div>-->
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Remarks</label>
 					<div class="col-sm-5">
 						<p class="form-control-static">{{$channel->remarks}}</p>
 					</div>
-				</div>
+				</div> -->
 				<!--<div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">GPS Coordinate</label>
 					<div class="col-sm-5">
 						<p class="form-control-static">{{$channel->gps}}</p>
 					</div>
 				</div>-->
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label for="inputEmail3" class="col-sm-2 control-label">Created</label>
 					<div class="col-sm-5">
 						<p class="form-control-static">{{$channel->created_at . ' (' .$channel->createUser->name .')'}}</p>
@@ -223,7 +223,7 @@ define("PAGETITLE", " | View Channel");
 					<div class="col-sm-5">
 						<p class="form-control-static">{{$channel->deleted_at ? $channel->deleted_at . ' (' .$channel->deleteUser->name .')' : ''}}</p>
 					</div>
-				</div>
+				</div> -->
 			</form>
 		</div>
 	</div>

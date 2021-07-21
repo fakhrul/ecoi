@@ -9,11 +9,11 @@
 		
 	});
 </script>
-<h3>Add Channel</h3>
+<h3>Add Department</h3>
 
 @stop
 <?
-define("PAGETITLE", " | Add Channel");
+define("PAGETITLE", " | Add Department");
 
 ?>
 @section('content')
@@ -46,20 +46,20 @@ define("PAGETITLE", " | Add Channel");
 			{{ Form::open(array('url' => 'admin/channels', 'class' => 'form-horizontal', 'role' => 'form')) }}
 
 			<div class="form-group">
-				{{ Form::label('channel_id', 'Channel ID', array('class' => 'col-sm-2 control-label')) }}
+				{{ Form::label('channel_id', 'Department Code', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-5">		
 					{{ Form::text('channel_id', Input::old('channel_id'), array('class' => 'form-control', 'maxlength' => '20')) }}
 				</div>	
 			</div>
 
 			<div class="form-group">
-				{{ Form::label('name', 'Company Name', array('class' => 'col-sm-2 control-label')) }}
+				{{ Form::label('name', 'Department Name', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-5">		
 					{{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
 				</div>
 			</div>
 
-			<div class="form-group">
+			<!-- <div class="form-group">
 				{{ Form::label('name', 'Company Reg No.', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-5">		
 					{{ Form::text('reg_no', Input::old('reg_no'), array('class' => 'form-control', 'onchange' => 'check_channel(this.value);')) }}
@@ -191,7 +191,7 @@ define("PAGETITLE", " | Add Channel");
 				<div class="col-sm-5">		
 					{{ Form::text('bank_no', Input::old('bank_no'), array('class' => 'form-control')) }}
 				</div>
-			</div>
+			</div> -->
 
 			<!--@if(Auth::user()->brand_id == '1')
 			<div class="form-group">
@@ -226,12 +226,12 @@ define("PAGETITLE", " | Add Channel");
 			</div>
 			@endif-->
 
-			<div class="form-group">
+			<!-- <div class="form-group">
 				{{ Form::label('remarks', 'Remarks', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-5">		
 					{{ Form::textarea('remarks', Input::old('remarks'), array('class' => 'form-control', 'rows' => '5')) }}
 				</div>
-			</div>
+			</div> -->
 
 			<!--@if(Auth::user()->brand_id == '1')
 			<div class="form-group">
