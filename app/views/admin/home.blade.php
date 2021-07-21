@@ -41,7 +41,7 @@ Welcome to {{ Config::get('app.fullname') }} {{-- Auth::user()->channel ? Auth::
 		<div class="table-responsive col-md-16 clearfix">
 			<table class="table table-hover table-striped">
 				<tr>
-					<td style="text-align:center;font-weight:bold;" class="col-sm-2 control-label">Station ID</td>
+					<td style="text-align:center;font-weight:bold;" class="col-sm-2 control-label">Station Code</td>
 					<td style="text-align:center;">{{$summary->Station_ID}}</td>
 					<td style="text-align:center;font-weight:bold;" class="col-sm-2 control-label">Station Name</td>
 					<td style="text-align:center;">{{$summary->Station_Name}}</td>
@@ -78,7 +78,7 @@ Welcome to {{ Config::get('app.fullname') }} {{-- Auth::user()->channel ? Auth::
 
 			<table class="table table-hover table-striped">
 				<tr>
-					<td style="text-align:center;font-weight:bold;" class="col-sm-4 control-label">Latest Water Level</td>
+					<td style="text-align:center;font-weight:bold;" class="col-sm-4 control-label">Current Water Level</td>
 					<td style="text-align:center;" class="col-sm-4">{{number_format($timelog->AI1, 3, '.', '') . ' m'}}</td>
 				</tr>
 			</table>
@@ -101,27 +101,11 @@ Welcome to {{ Config::get('app.fullname') }} {{-- Auth::user()->channel ? Auth::
 							<td>mm</td>	
 						</tr>-->
 					<tr>
-						<!-- <td>Last 11 Hourly</td>
-							<td>{{$timelog->last11h}}</td>
-							<td>mm</td>	 -->
-						<td>Last 5 Hourly</td>
-						<td>{{$timelog->last5h}}</td>
-						<td>mm</td>
-					</tr>
-					<tr>
-						<!-- <td>Last 10 Hourly</td>
-							<td>{{$timelog->last10h}}</td>
+						<!-- <td>Last 7 Hourly</td>
+							<td>{{$timelog->last7h}}</td>
 							<td>mm</td>								 -->
-						<td>Last 4 Hourly</td>
-						<td>{{$timelog->last4h}}</td>
-						<td>mm</td>
-					</tr>
-					<tr>
-						<!-- <td>Last 9 Hourly</td>
-							<td>{{$timelog->last9h}}</td>
-							<td>mm</td>	 -->
-						<td>Last 3 Hourly</td>
-						<td>{{$timelog->last3h}}</td>
+						<td>Last 1 Hourly</td>
+						<td>{{$timelog->last1h}}</td>
 						<td>mm</td>
 					</tr>
 					<tr>
@@ -133,13 +117,30 @@ Welcome to {{ Config::get('app.fullname') }} {{-- Auth::user()->channel ? Auth::
 						<td>mm</td>
 					</tr>
 					<tr>
-						<!-- <td>Last 7 Hourly</td>
-							<td>{{$timelog->last7h}}</td>
-							<td>mm</td>								 -->
-						<td>Last 1 Hourly</td>
-						<td>{{$timelog->last1h}}</td>
+						<!-- <td>Last 9 Hourly</td>
+							<td>{{$timelog->last9h}}</td>
+							<td>mm</td>	 -->
+						<td>Last 3 Hourly</td>
+						<td>{{$timelog->last3h}}</td>
 						<td>mm</td>
 					</tr>
+					<tr>
+						<!-- <td>Last 10 Hourly</td>
+							<td>{{$timelog->last10h}}</td>
+							<td>mm</td>								 -->
+						<td>Last 4 Hourly</td>
+						<td>{{$timelog->last4h}}</td>
+						<td>mm</td>
+					</tr>
+					<tr>
+						<!-- <td>Last 11 Hourly</td>
+							<td>{{$timelog->last11h}}</td>
+							<td>mm</td>	 -->
+						<td>Last 5 Hourly</td>
+						<td>{{$timelog->last5h}}</td>
+						<td>mm</td>
+					</tr>
+
 				</tbody>
 			</table>
 		</div>

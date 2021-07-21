@@ -8,7 +8,7 @@
         }, 300000);
      };
 </script>
-<h3>Manage Summary</h3>
+<h3>Detailed Information</h3>
 @stop
 @section('content')
 <!-- if there are creation errors, they will show here -->
@@ -52,7 +52,7 @@
 		<div class="panel-body">
 			<form class="form-horizontal" role="form">
 				<div class="form-group">
-					<label for="inputTypeDescription" class="col-sm-3 control-label">Station ID</label>
+					<label for="inputTypeDescription" class="col-sm-3 control-label">Station Code</label>
 					<div class="col-sm-5">
 						<p class="form-control-static">{{$summary->Station_ID}}</p>
 					</div>
@@ -157,12 +157,12 @@
 						<p class="form-control-static">{{$summary->server4_ip . ' (' . translateStatus($summary->server4_en) . ')' }}</p>
 					</div>
 				</div>
-				<div class="form-group">
+				<!-- <div class="form-group">
 					<label for="inputTypeCode" class="col-sm-3 control-label">Health IP</label>
 					<div class="col-sm-5">
 						<p class="form-control-static">{{$summary->health_ip . ' (' . translateStatus($summary->health_en) . ')' }}</p>
 					</div>
-				</div>
+				</div> -->
 			</form>
 		</div>
 	</div>

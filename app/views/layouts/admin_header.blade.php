@@ -1,27 +1,32 @@
     <div class="navbar navbar-white navbar-fixed-top" role="navigation">
-    	<div class="container">
-    		<div class="navbar-header">
+        <div class="container">
+            <div class="navbar-header">
                 <a class="navbar-brand" href="#"><img src="{{ URL::asset('assets/images/ecoi_small.png') }}" style="vertical-align:middle;"> {{ Config::get('app.name') }}</a>
-                <div>  
-        			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        				<span class="sr-only">Toggle navigation</span>
-        				<span class="icon-bar"></span>
-        				<span class="icon-bar"></span>
-        				<span class="icon-bar"></span>
-        			</button>
+                <div>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-    		</div>
-    		<div class="collapse navbar-collapse">
-    			<ul class="nav navbar-nav">
-                    <li><a href="{{URL::to('/admin/home')}}">Home</a></li>  
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{URL::to('/admin/home')}}">Home</a></li>
+                    {{ HTML::clever_menu(array('admin.summary.index'), 'Info' ) }}
+                    <ul class="dropdown-menu" role="menu">
+                        {{ HTML::clever_link('admin.summary.index', 'Manage Info' ) }}
+                    </ul>
+                    </li>
                     {{ HTML::clever_menu(array('admin.brands.index','admin.groups.index','admin.users.index'), 'User' ) }}
-                        <ul class="dropdown-menu" role="menu">
-                            {{ HTML::clever_link('admin.brands.index', 'Manage Brands' ) }}
-                            {{ HTML::clever_link('admin.groups.index', 'Manage Groups' ) }}
-                            {{ HTML::clever_link('admin.users.index', 'Manage Users' ) }}
-                        </ul>
-                    </li>   
-                    {{ HTML::clever_menu(array('admin.channels.index'), 'Channel' ) }}
+                    <ul class="dropdown-menu" role="menu">
+                        {{ HTML::clever_link('admin.brands.index', 'Manage Brands' ) }}
+                        {{ HTML::clever_link('admin.groups.index', 'Manage Groups' ) }}
+                        {{ HTML::clever_link('admin.users.index', 'Manage Users' ) }}
+                    </ul>
+                    </li>
+                    <!-- {{ HTML::clever_menu(array('admin.channels.index'), 'Channel' ) }}
                         <ul class="dropdown-menu" role="menu">
                             {{ HTML::clever_link('admin.channels.index', 'Manage Channels' ) }}
                         </ul>
@@ -29,15 +34,10 @@
                     {{ HTML::clever_menu(array('admin.branch.index'), 'Branch' ) }}
                         <ul class="dropdown-menu" role="menu">
                             {{ HTML::clever_link('admin.branch.index', 'Manage Branches' ) }}
-                            <!--<li role="separator" class="divider"></li>                      
-							added by naz 2015-03-24 -->
+
                         </ul>
-                    </li>
-                    {{ HTML::clever_menu(array('admin.summary.index'), 'Summary' ) }}
-                        <ul class="dropdown-menu" role="menu">
-                            {{ HTML::clever_link('admin.summary.index', 'Manage Summary' ) }}                           
-                        </ul>
-                    </li>
+                    </li> -->
+
                     {{-- <li><a class="pull-right btn btn-small btn-warning" href="{{ URL::to('logout') }}">Logout ({{ Auth::user()->username }})</a></li> --}}
                     {{-- <li class="dropdown">
     					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
@@ -51,7 +51,7 @@
     						<li><a href="#">One more separated link</a></li>
     					</ul>
     				</li> --}}
-    			</ul>
+                </ul>
                 <ul class="nav navbar-nav pull-right">
                     {{-- <li><a href="{{ URL::to('/admin/product_type/select') }}"><span class="glyphicon glyphicon-refresh"></span> {{ Session::get('product_type_name') }}</a></li> --}}
                     <li class="dropdown">
@@ -67,9 +67,10 @@
                         </ul>
                     </li>  
                 </ul>
-                -->           
-    		</div><!--/.nav-collapse -->
-    	</div>   
+                -->
+            </div>
+            <!--/.nav-collapse -->
+        </div>
     </div>
 
     <div id="btn-user" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -87,13 +88,13 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
 
     <!-- loading panel -->
-        <div id="loading_panel" class="loading loading-content-effect">
-            <div class="loading-content">
+    <div id="loading_panel" class="loading loading-content-effect">
+        <div class="loading-content">
             <h4><img src="{{ URL::asset('assets/images/loading.gif') }}" style="margin-top:-4px;">&nbsp;&nbsp;Loading...</h4>
-            </div>
         </div>
-        <div class="loading-backdrop"></div>
+    </div>
+    <div class="loading-backdrop"></div>
     <!-- loading panel -->

@@ -40,7 +40,7 @@ Welcome to <?php echo Config::get('app.fullname'); ?> <?php /* Auth::user()->cha
 		<div class="table-responsive col-md-16 clearfix">
 			<table class="table table-hover table-striped">
 				<tr>
-					<td style="text-align:center;font-weight:bold;" class="col-sm-2 control-label">Station ID</td>
+					<td style="text-align:center;font-weight:bold;" class="col-sm-2 control-label">Station Code</td>
 					<td style="text-align:center;"><?php echo $summary->Station_ID; ?></td>
 					<td style="text-align:center;font-weight:bold;" class="col-sm-2 control-label">Station Name</td>
 					<td style="text-align:center;"><?php echo $summary->Station_Name; ?></td>
@@ -77,7 +77,7 @@ Welcome to <?php echo Config::get('app.fullname'); ?> <?php /* Auth::user()->cha
 
 			<table class="table table-hover table-striped">
 				<tr>
-					<td style="text-align:center;font-weight:bold;" class="col-sm-4 control-label">Latest Water Level</td>
+					<td style="text-align:center;font-weight:bold;" class="col-sm-4 control-label">Current Water Level</td>
 					<td style="text-align:center;" class="col-sm-4"><?php echo number_format($timelog->AI1, 3, '.', '') . ' m'; ?></td>
 				</tr>
 			</table>
@@ -100,27 +100,11 @@ Welcome to <?php echo Config::get('app.fullname'); ?> <?php /* Auth::user()->cha
 							<td>mm</td>	
 						</tr>-->
 					<tr>
-						<!-- <td>Last 11 Hourly</td>
-							<td><?php echo $timelog->last11h; ?></td>
-							<td>mm</td>	 -->
-						<td>Last 5 Hourly</td>
-						<td><?php echo $timelog->last5h; ?></td>
-						<td>mm</td>
-					</tr>
-					<tr>
-						<!-- <td>Last 10 Hourly</td>
-							<td><?php echo $timelog->last10h; ?></td>
+						<!-- <td>Last 7 Hourly</td>
+							<td><?php echo $timelog->last7h; ?></td>
 							<td>mm</td>								 -->
-						<td>Last 4 Hourly</td>
-						<td><?php echo $timelog->last4h; ?></td>
-						<td>mm</td>
-					</tr>
-					<tr>
-						<!-- <td>Last 9 Hourly</td>
-							<td><?php echo $timelog->last9h; ?></td>
-							<td>mm</td>	 -->
-						<td>Last 3 Hourly</td>
-						<td><?php echo $timelog->last3h; ?></td>
+						<td>Last 1 Hourly</td>
+						<td><?php echo $timelog->last1h; ?></td>
 						<td>mm</td>
 					</tr>
 					<tr>
@@ -132,13 +116,30 @@ Welcome to <?php echo Config::get('app.fullname'); ?> <?php /* Auth::user()->cha
 						<td>mm</td>
 					</tr>
 					<tr>
-						<!-- <td>Last 7 Hourly</td>
-							<td><?php echo $timelog->last7h; ?></td>
-							<td>mm</td>								 -->
-						<td>Last 1 Hourly</td>
-						<td><?php echo $timelog->last1h; ?></td>
+						<!-- <td>Last 9 Hourly</td>
+							<td><?php echo $timelog->last9h; ?></td>
+							<td>mm</td>	 -->
+						<td>Last 3 Hourly</td>
+						<td><?php echo $timelog->last3h; ?></td>
 						<td>mm</td>
 					</tr>
+					<tr>
+						<!-- <td>Last 10 Hourly</td>
+							<td><?php echo $timelog->last10h; ?></td>
+							<td>mm</td>								 -->
+						<td>Last 4 Hourly</td>
+						<td><?php echo $timelog->last4h; ?></td>
+						<td>mm</td>
+					</tr>
+					<tr>
+						<!-- <td>Last 11 Hourly</td>
+							<td><?php echo $timelog->last11h; ?></td>
+							<td>mm</td>	 -->
+						<td>Last 5 Hourly</td>
+						<td><?php echo $timelog->last5h; ?></td>
+						<td>mm</td>
+					</tr>
+
 				</tbody>
 			</table>
 		</div>

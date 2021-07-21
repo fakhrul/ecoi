@@ -19,7 +19,7 @@ class AdminSummaryController extends \BaseController {
 		$sms_no = SmsNo::where('idSMS_no', 1)->first();
 		$sensor_setting = SensorSetting::where('idSensor_setting', 1)->first();
 		
-        $breadcrumbs = array('Summary' => 'admin/summary' , 'Manage Summary' => 'admin/summary');
+        $breadcrumbs = array('Info' => 'admin/summary' , 'Manage Info' => 'admin/summary');
 
 		return View::make('admin.summary.index')->with('breadcrumbs',$breadcrumbs)->with('summary', $summary)->with('timelog', $timelog)->with('sms_no', $sms_no)->with('sensor_setting', $sensor_setting);
 	}
