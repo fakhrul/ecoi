@@ -53,7 +53,8 @@ class HomeController extends BaseController
 		// exit();
 
 		$summary = RtuConfig::where('idrut_config', 1)->first();
-		$max_daily_rainfall = TimeLog::orderBy('RF1_DAILY', 'desc')->orderBy('LOG_DATE', 'desc')->orderBy('LOG_TIME', 'desc')->first();
+		// $max_daily_rainfall = TimeLog::orderBy('RF1_DAILY', 'desc')->orderBy('LOG_DATE', 'desc')->orderBy('LOG_TIME', 'desc')->first();
+		$max_daily_rainfall = TimeLog::orderBy('dtstamp', 'desc')->first();
 		//echo "<pre>".print_r($max_daily_rainfall,true)."</pre>"; exit();
 		$timelog = TimeLog::orderBy('LOG_DATE', 'desc')->orderBy('LOG_TIME', 'desc')->first();
 		//echo "<pre>".print_r($timelog,true)."</pre>"; exit();

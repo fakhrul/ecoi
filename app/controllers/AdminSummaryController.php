@@ -19,9 +19,15 @@ class AdminSummaryController extends \BaseController {
 		$sms_no = SmsNo::where('idSMS_no', 1)->first();
 		$sensor_setting = SensorSetting::where('idSensor_setting', 1)->first();
 		
+		$server1 = TimeLog::where('server1_send', '1')->orderBy('dtstamp', 'desc')->first();
+		$server2 = TimeLog::where('server2_send', '1')->orderBy('dtstamp', 'desc')->first();
+		$server3 = TimeLog::where('server3_send', '1')->orderBy('dtstamp', 'desc')->first();
+		$server4 = TimeLog::where('server4_send', '1')->orderBy('dtstamp', 'desc')->first();
+		//$server1 = '';
+
         $breadcrumbs = array('Info' => 'admin/summary' , 'Manage Info' => 'admin/summary');
 
-		return View::make('admin.summary.index')->with('breadcrumbs',$breadcrumbs)->with('summary', $summary)->with('timelog', $timelog)->with('sms_no', $sms_no)->with('sensor_setting', $sensor_setting);
+		return View::make('admin.summary.index')->with('breadcrumbs',$breadcrumbs)->with('summary', $summary)->with('timelog', $timelog)->with('sms_no', $sms_no)->with('sensor_setting', $sensor_setting)->with('server1', $server1)->with('server2', $server2)->with('server3', $server3)->with('server4', $server4);
 	}
 
 
