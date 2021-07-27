@@ -47,8 +47,20 @@ Welcome to {{ Config::get('app.fullname') }} {{-- Auth::user()->name ? Auth::use
 					<td style="text-align:center;">{{$summary->Station_Name}}</td>
 				</tr>
 				<tr>
-					<td style="text-align:center;font-weight:bold;" class="col-sm-2 control-label">Alarm Status</td>
-					<td style="text-align:center;">{{$timelog->alarm_status}}</td>
+				<td style="text-align:center;font-weight:bold;" class="col-sm-2 control-label">Alarm Status</td>
+
+				@if ($timelog->alarm_status == "A1")
+				<td style="text-align:center;">{{$timelog->alarm_status}} - Rainfall Alarm</td>
+					@elseif($timelog->alarm_status == "A2") 
+					<td style="text-align:center;">{{$timelog->alarm_status}} - Water Level Alarm</td>
+						@elseif($timelog->alarm_status == "A3") 
+						<td style="text-align:center;">{{$timelog->alarm_status}} - Rainfall & Water Level Alarm</td>
+						@elseif($timelog->alarm_status == "N") 
+						<td style="text-align:center;">{{$timelog->alarm_status}} - Normal</td>
+							@else
+							<td style="text-align:center;">{{$timelog->alarm_status}}</td>
+							@endif
+
 					<td style="text-align:center;font-weight:bold;" class="col-sm-2 control-label">Last Updated</td>
 					<td style="text-align:center;">{{$timelog->LOG_DATE . ' ' . $timelog->LOG_TIME}}</td>
 				</tr>

@@ -72,7 +72,19 @@
 			<div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Alarm Status</label>
 				<div class="col-sm-5">
-					<p class="form-control-static">{{$timelog->alarm_status}}</p>
+
+					@if ($timelog->alarm_status == "A1")
+					<p class="form-control-static">{{$timelog->alarm_status}} - Rainfall Alarm</p>
+					@elseif($timelog->alarm_status == "A2") 
+					<p class="form-control-static">{{$timelog->alarm_status}} - Water Level Alarm</p>
+						@elseif($timelog->alarm_status == "A3") 
+						<p class="form-control-static">{{$timelog->alarm_status}} - Rainfall & Water Level Alarm</p>
+						@elseif($timelog->alarm_status == "N") 
+						<p class="form-control-static">{{$timelog->alarm_status}} - Normal</p>
+							@else
+							<p class="form-control-static">{{$timelog->alarm_status}}</p>
+							@endif
+
 				</div>
 			</div>
 			<div class="form-group">
@@ -96,18 +108,18 @@
 			<div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Battery Voltage</label>
 				<div class="col-sm-5">
-					@if ($timelog->Bat_Voltage >= 12.6 && $timelog->Bat_Voltage <= 14.4) <p class="form-control-static">{{$timelog->Bat_Voltage}} (Charging)</p>
-						@elseif($timelog->Bat_Voltage >= 11.0 && $timelog->Bat_Voltage < 12.6) <p class="form-control-static">{{$timelog->Bat_Voltage}} (Good)</p>
-							@elseif($timelog->Bat_Voltage >= 9.0 && $timelog->Bat_Voltage < 11.0) <p class="form-control-static">{{$timelog->Bat_Voltage}} (Weak)</p>
+					@if ($timelog->Bat_Voltage >= 12.6 && $timelog->Bat_Voltage <= 14.4) <p class="form-control-static">{{$timelog->Bat_Voltage}} Volt (Charging)</p>
+						@elseif($timelog->Bat_Voltage >= 11.0 && $timelog->Bat_Voltage < 12.6) <p class="form-control-static">{{$timelog->Bat_Voltage}} Volt (Good)</p>
+							@elseif($timelog->Bat_Voltage >= 9.0 && $timelog->Bat_Voltage < 11.0) <p class="form-control-static">{{$timelog->Bat_Voltage}} Volt (Weak)</p>
 								@else
-								<p class="form-control-static">{{$timelog->Bat_Voltage}}</p>
+								<p class="form-control-static">{{$timelog->Bat_Voltage}} Volt</p>
 								@endif
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Solar Voltage</label>
 				<div class="col-sm-5">
-					<p class="form-control-static">{{$timelog->Solar_voltage}}</p>
+					<p class="form-control-static">{{$timelog->Solar_voltage}} Volt</p>
 				</div>
 			</div>
 			<div class="form-group">
@@ -279,20 +291,20 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">Sensor Details</h3>
+		<h3 class="panel-title">Sensor Threshold Details</h3>
 	</div>
 	<div class="panel-body">
 		<form class="form-horizontal" role="form">
 			<div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Rainfall 1 High</label>
 				<div class="col-sm-5">
-					<p class="form-control-static">{{$sensor_setting->rf1_h}}</p>
+					<p class="form-control-static">{{$sensor_setting->rf1_h}} mm</p>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Rainfall 1 Very High</label>
 				<div class="col-sm-5">
-					<p class="form-control-static">{{$sensor_setting->rf1_vh}}</p>
+					<p class="form-control-static">{{$sensor_setting->rf1_vh}} mm</p>
 				</div>
 			</div>
 			<div class="form-group">

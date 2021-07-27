@@ -195,7 +195,7 @@
 				</div>
 			</div>
 			
-			<div class="form-group">
+			<!-- <div class="form-group">
 				{{ Form::label('health_server', 'Health Server', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-3 form-inline">
 					{{ Form::checkbox('health_en',null,$summary->health_en, array('id'=>'health_en')) }}
@@ -207,7 +207,7 @@
 				<div class="col-sm-3 form-inline">
 					Password: {{ Form::text('health_pass', Input::old('health_pass'), array('class' => 'form-control')) }}
 				</div>
-			</div>		
+			</div>		 -->
 		</div>
 	</div>
 	
