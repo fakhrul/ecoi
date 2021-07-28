@@ -33,9 +33,11 @@
 		</style>
 		<!-- JS -->
         
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<script src="<?php echo URL::asset('assets/js/jquery.min.js'); ?>"></script>
+
 		<script src="<?php echo URL::asset('assets/css/bootstrap.min.js'); ?>"></script>	
-		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular.min.js"></script> <!-- load angular -->
+		<script src="<?php echo URL::asset('assets/js/angular.min.js'); ?>"></script>
+
 		<script src="<?php echo URL::asset('assets/js/general.js'); ?>"></script>	
 		<script src="<?php echo URL::asset('assets/js/jquery.blockUI.min.js'); ?>"></script>	
 		<!-- CSS added by naz 2015-03-23 -->
