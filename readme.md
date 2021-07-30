@@ -8,8 +8,9 @@ mysql -u root -p ecoi_rtu < "C:\Temp\ecoi-db-140721\ecoi-db-140721.sql"
 ```
 
 # Accessing RTU Melaka
-Setup
 ````
+Setup
+
 1. Pergi "Open Network and internet settings", click masuk
 2. Selepas screen keluar, pilih "VPN"
 3. Click "Add a VPN connection"
