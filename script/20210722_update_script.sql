@@ -62,4 +62,4 @@ INSERT INTO `ecoi_rtu`.`acl_group_permissions` (`id`, `group_id`, `permission_id
 
 INSERT INTO `ecoi_rtu`.`acl_group_permissions` (`id`, `group_id`, `permission_id`) VALUES (NULL, '4', '94');
 
-manual create user
+'manual create user

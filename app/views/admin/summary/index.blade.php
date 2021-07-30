@@ -126,11 +126,11 @@
 				<label for="inputTypeCode" class="col-sm-3 control-label">GSM Signal</label>
 				<div class="col-sm-5">
 					@if ($timelog->GSM_Sig > -60)
-					<p class="form-control-static">{{$timelog->GSM_Sig}} dBi (Excellent)</p>
-					@elseif($timelog->GSM_Sig >= -89 && $timelog->GSM_Sig <= -60) <p class="form-control-static">{{$timelog->GSM_Sig}} dBi (Good)</p>
-						@elseif($timelog->GSM_Sig >= -99 && $timelog->GSM_Sig <= -90) <p class="form-control-static">{{$timelog->GSM_Sig}} dBi (Fair)</p>
+					<p class="form-control-static">{{$timelog->GSM_Sig}} dBm (Excellent)</p>
+					@elseif($timelog->GSM_Sig >= -89 && $timelog->GSM_Sig <= -60) <p class="form-control-static">{{$timelog->GSM_Sig}} dBm (Good)</p>
+						@elseif($timelog->GSM_Sig >= -99 && $timelog->GSM_Sig <= -90) <p class="form-control-static">{{$timelog->GSM_Sig}} dBm (Fair)</p>
 							@else
-							<p class="form-control-static">{{$timelog->GSM_Sig}} dBi (Weak)</p>
+							<p class="form-control-static">{{$timelog->GSM_Sig}} dBm (Weak)</p>
 							@endif
 				</div>
 			</div>
