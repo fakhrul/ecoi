@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('page-header')
-<h3>View Channel</h3>
+<h3>View Department</h3>
 <!--@if (allowed('channels.edit'))
 <a class="btn btn-small btn-primary" href="{{ URL::to('channels/' . $channel->id) .'/edit' }}">Edit</a>
 @endif-->

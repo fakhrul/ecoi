@@ -554,7 +554,7 @@ class SummaryController extends \BaseController {
 			
 			Session::flash('message', 'Download failed. Kindly select the correct format.');
 			
-			$breadcrumbs = array('Summary' => 'summary' , 'Manage Summary' => 'summary');
+			$breadcrumbs = array('Info' => 'summary' , 'Manage Info' => 'summary');
 			
 			return View::make('summary.index')->with('breadcrumbs',$breadcrumbs)->with('summary', $summary)->with('timelog', $timelog)->with('sms_no', $sms_no)->with('sensor_setting', $sensor_setting);
 		}

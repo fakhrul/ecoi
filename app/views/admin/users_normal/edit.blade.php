@@ -112,7 +112,7 @@
 
 	});
 </script>
-<h3>Edit User</h3>
+<h3>Edit Normal User</h3>
 
 @stop
 <?

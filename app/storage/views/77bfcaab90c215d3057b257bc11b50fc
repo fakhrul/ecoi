@@ -1,4 +1,4 @@
-<?php define("PAGETITLE", " | Summary"); ?>
+<?php define("PAGETITLE", " | Info"); ?>
 <?php $__env->startSection('page-header'); ?>
 <script>
 	window.onload = function() {
@@ -125,11 +125,11 @@
 				<label for="inputTypeCode" class="col-sm-3 control-label">GSM Signal</label>
 				<div class="col-sm-5">
 					<?php if ($timelog->GSM_Sig > -60): ?>
-					<p class="form-control-static"><?php echo $timelog->GSM_Sig; ?> dBi (Excellent)</p>
-					<?php elseif($timelog->GSM_Sig >= -89 && $timelog->GSM_Sig <= -60): ?> <p class="form-control-static"><?php echo $timelog->GSM_Sig; ?> dBi (Good)</p>
-						<?php elseif($timelog->GSM_Sig >= -99 && $timelog->GSM_Sig <= -90): ?> <p class="form-control-static"><?php echo $timelog->GSM_Sig; ?> dBi (Fair)</p>
+					<p class="form-control-static"><?php echo $timelog->GSM_Sig; ?> dBm (Excellent)</p>
+					<?php elseif($timelog->GSM_Sig >= -89 && $timelog->GSM_Sig <= -60): ?> <p class="form-control-static"><?php echo $timelog->GSM_Sig; ?> dBm (Good)</p>
+						<?php elseif($timelog->GSM_Sig >= -99 && $timelog->GSM_Sig <= -90): ?> <p class="form-control-static"><?php echo $timelog->GSM_Sig; ?> dBm (Fair)</p>
 							<?php else: ?>
-							<p class="form-control-static"><?php echo $timelog->GSM_Sig; ?> dBi (Weak)</p>
+							<p class="form-control-static"><?php echo $timelog->GSM_Sig; ?> dBm (Weak)</p>
 							<?php endif; ?>
 				</div>
 			</div>

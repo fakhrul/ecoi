@@ -8,7 +8,7 @@
         }, 300000);
      };
 </script>
-<h3>Manage Summary</h3>
+<h3>Manage Info</h3>
 @stop
 @section('content')
 <!-- will be used to show any messages -->

@@ -1,7 +1,7 @@
 @extends('layouts.default')
 
 @section('page-header')
-	<h3>Edit Channel</h3>
+	<h3>Edit Department</h3>
 
 @stop
 

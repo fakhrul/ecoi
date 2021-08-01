@@ -10,11 +10,11 @@
 		
 	});
 </script>
-<h3>Edit Channel</h3>
+<h3>Edit Department</h3>
 
 @stop
 <?
-define("PAGETITLE", " | Edit Channel");
+define("PAGETITLE", " | Edit Department");
 
 ?>
 @section('content')

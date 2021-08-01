@@ -13,7 +13,7 @@
 <h3>View Summary</h3>
 @stop
 <?
-define("PAGETITLE", " | View Summary");
+define("PAGETITLE", " | View Info");
 ?>
 @section('content')
 @if (Session::has("message"))

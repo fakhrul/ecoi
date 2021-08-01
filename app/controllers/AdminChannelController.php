@@ -105,7 +105,7 @@ class AdminChannelController extends BaseController
 			$channel_type = array('' => 'Select Type', 'MD' => 'Master Distributor', 'DS' => 'Distributor', 'D' => 'Dealer', 'C' => 'Client');
 		}
 
-		$breadcrumbs = array('Channel' => 'admin/channels', 'Add Channel' => 'admin/channels/create');
+		$breadcrumbs = array('Department' => 'admin/channels', 'Add Department' => 'admin/channels/create');
 
 		return View::make('admin.channels.create')->with('breadcrumbs', $breadcrumbs)
 			->with('upline_options', $upline_options)->with('brands', $brands)->with('channel_type', $channel_type);
@@ -254,7 +254,7 @@ class AdminChannelController extends BaseController
 					$channel->products()->attach(102);
 #				}
 			}*/
-			Session::flash('message', 'Channel Added');
+			Session::flash('message', 'Department Added');
 
 			return Redirect::to('admin/channels/' . $channel->id);
 		}
@@ -271,7 +271,7 @@ class AdminChannelController extends BaseController
 		// get the nerd
 		$channel = Channel::withTrashed()->find($id);
 
-		$breadcrumbs = array('Channel' => 'admin/channels', 'View Channel' => 'admin/channels');
+		$breadcrumbs = array('Department' => 'admin/channels', 'View Department' => 'admin/channels');
 
 		// show the view and pass the nerd to it
 		return View::make('admin.channels.show')
@@ -301,7 +301,7 @@ class AdminChannelController extends BaseController
 
 		$brands = Auth::user()->brands()->lists('name', 'brand_id');
 
-		$breadcrumbs = array('Channel' => 'admin/channels', 'Edit Channel' => 'admin/channels');
+		$breadcrumbs = array('Department' => 'admin/channels', 'Edit Department' => 'admin/channels');
 
 		// show the edit form and pass the nerd
 		return View::make('admin.channels.edit')
@@ -375,7 +375,7 @@ class AdminChannelController extends BaseController
 			$channel->save();
 
 			// redirect
-			Session::flash('message', 'Channel Updated');
+			Session::flash('message', 'Department Updated');
 			return Redirect::to('admin/channels/' . $channel->id);
 		}
 	}
@@ -396,7 +396,7 @@ class AdminChannelController extends BaseController
 		$channel->delete();
 
 		// redirect
-		Session::flash('message', 'Channel Deleted');
+		Session::flash('message', 'Department Deleted');
 		return Redirect::to('admin/channels/' . $channel->id);
 	}
 
@@ -412,7 +412,7 @@ class AdminChannelController extends BaseController
 		$channel->save();
 
 		// redirect
-		Session::flash('message', 'Channel Restored');
+		Session::flash('message', 'Department Restored');
 		return Redirect::to('admin/channels/' . $channel->id);
 	}
 

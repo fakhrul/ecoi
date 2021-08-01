@@ -10,10 +10,10 @@
 		
 	});
 </script>
-<h3>View Channel</h3>
+<h3>View Department</h3>
 @stop
 <?
-define("PAGETITLE", " | View Channel");
+define("PAGETITLE", " | View Department");
 
 ?>
 @section('content')

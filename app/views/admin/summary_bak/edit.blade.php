@@ -9,7 +9,7 @@
 		});
 	});
 </script>
-<h3>Edit Summary</h3>
+<h3>Edit Info</h3>
 @stop
 @section('content')
 <!-- if there are creation errors, they will show here -->

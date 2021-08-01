@@ -1,5 +1,5 @@
 @extends('layouts.admin_default')
-<?php define("PAGETITLE", " | Summary"); ?>
+<?php define("PAGETITLE", " | Info"); ?>
 @section('page-header')
 <script>
 	window.onload = function() {

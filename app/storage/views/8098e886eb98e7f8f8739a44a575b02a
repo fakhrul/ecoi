@@ -8,7 +8,7 @@
 		});
 	});
 </script>
-<h3>Edit Summary</h3>
+<h3>Edit Info</h3>
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('content'); ?>
 <!-- if there are creation errors, they will show here -->
