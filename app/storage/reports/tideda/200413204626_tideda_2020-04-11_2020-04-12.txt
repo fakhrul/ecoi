@@ -1,5 +1,0 @@
-~~~ NIWA TIDEDA ~~~ JPS 
-~~~ LIST ~~~
-Source is Site at WPKL1000 
-1 Item INCREMENTAL From 04/11/2020 to 04/12/2020 
-	Rain	Date		Time

@@ -75,15 +75,15 @@
 
 					@if ($timelog->alarm_status == "A1")
 					<p class="form-control-static">{{$timelog->alarm_status}} - Rainfall Alarm</p>
-					@elseif($timelog->alarm_status == "A2") 
+					@elseif($timelog->alarm_status == "A2")
 					<p class="form-control-static">{{$timelog->alarm_status}} - Water Level Alarm</p>
-						@elseif($timelog->alarm_status == "A3") 
-						<p class="form-control-static">{{$timelog->alarm_status}} - Rainfall & Water Level Alarm</p>
-						@elseif($timelog->alarm_status == "N") 
-						<p class="form-control-static">{{$timelog->alarm_status}} - Normal</p>
-							@else
-							<p class="form-control-static">{{$timelog->alarm_status}}</p>
-							@endif
+					@elseif($timelog->alarm_status == "A3")
+					<p class="form-control-static">{{$timelog->alarm_status}} - Rainfall & Water Level Alarm</p>
+					@elseif($timelog->alarm_status == "N")
+					<p class="form-control-static">{{$timelog->alarm_status}} - Normal</p>
+					@else
+					<p class="form-control-static">{{$timelog->alarm_status}}</p>
+					@endif
 
 				</div>
 			</div>
@@ -134,7 +134,7 @@
 							@endif
 				</div>
 			</div>
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Sampling</label>
 				<div class="col-sm-5">
 					<p class="form-control-static">{{$summary->sam_H}} hour(s) {{$summary->sam_M}} minute(s)</p>
@@ -144,6 +144,18 @@
 				<label for="inputTypeCode" class="col-sm-3 control-label">Transfer</label>
 				<div class="col-sm-5">
 					<p class="form-control-static">{{$summary->transfer_H}} hour(s) {{$summary->transfer_M}} minute(s)</p>
+				</div>
+			</div> -->
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Sampling</label>
+				<div class="col-sm-5">
+					<p class="form-control-static">5 minute(s)</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Transfer</label>
+				<div class="col-sm-5">
+					<p class="form-control-static">15 minute(s)</p>
 				</div>
 			</div>
 		</form>

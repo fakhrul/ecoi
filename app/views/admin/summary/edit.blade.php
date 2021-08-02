@@ -94,7 +94,7 @@
 				</div>	
 			</div>
 			
-			<div class="form-group">
+			<!-- <div class="form-group">
 				{{ Form::label('sampling', 'Sampling', array('class' => 'col-sm-2 control-label')) }}
 				<div class="col-sm-3">
 					<div class="input-group">
@@ -130,7 +130,7 @@
 						<span class="input-group-addon">Minutes</span>
 					</div>
 				 </div>	
-			</div>
+			</div> -->
 		</div>
 	</div>
 	

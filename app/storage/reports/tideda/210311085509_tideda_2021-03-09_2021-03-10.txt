@@ -1,5 +1,0 @@
-~~~ NIWA TIDEDA ~~~ JPS 
-~~~ LIST ~~~
-Source is Site at FWPP0002 
-1 Item INCREMENTAL From 03/09/2021 to 03/10/2021 
-	Rain	Date		Time

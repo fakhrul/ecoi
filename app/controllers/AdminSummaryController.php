@@ -90,10 +90,10 @@ class AdminSummaryController extends \BaseController {
 			'Station_ID'	=> 'required|Max:80',
 			'Station_Name'	=> 'required|Max:80',
 			
-			'sam_H'			=> 'required|integer|max:23',
-			'sam_M'			=> 'required|integer|max:59',
-			'transfer_H'	=> 'required|integer|max:23',
-			'transfer_M'	=> 'required|integer|max:59',
+			// 'sam_H'			=> 'required|integer|max:23',
+			// 'sam_M'			=> 'required|integer|max:59',
+			// 'transfer_H'	=> 'required|integer|max:23',
+			// 'transfer_M'	=> 'required|integer|max:59',
 			
 			'server1_ip'	=> 'ip',
 			//'server1_user'	=> 'alpha_num',
@@ -142,10 +142,10 @@ class AdminSummaryController extends \BaseController {
 			
 			$summary->Station_ID       	= Input::get('Station_ID');
 			$summary->Station_Name 		= Input::get('Station_Name');
-			$summary->sam_H       		= Input::get('sam_H');
-			$summary->sam_M 			= Input::get('sam_M');
-			$summary->transfer_H       	= Input::get('transfer_H');
-			$summary->transfer_M 		= Input::get('transfer_M');
+			// $summary->sam_H       		= Input::get('sam_H');
+			// $summary->sam_M 			= Input::get('sam_M');
+			// $summary->transfer_H       	= Input::get('transfer_H');
+			// $summary->transfer_M 		= Input::get('transfer_M');
 			
 			$summary->server1_enable	= (Input::has('server1_enable') == 'on' ? '1' : '0');
 			$summary->server1_ip       	= Input::get('server1_ip');
