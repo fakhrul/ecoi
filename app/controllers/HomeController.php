@@ -76,8 +76,9 @@ class HomeController extends BaseController
 
 	public function showLogin()
 	{
+		$secured_captcha =  mt_rand(1000, 9999);
 		// show the form
-		return View::make('login');
+		return View::make('login')->with('secured_captcha', $secured_captcha);
 	}
 
 	public function doLogin()
@@ -85,7 +86,8 @@ class HomeController extends BaseController
 		// validate the info, create rules for the inputs
 		$rules = array(
 			'username'    => 'required', // make sure the email is an actual email
-			'password'	  => 'required' // password can only be alphanumeric and has to be greater than 6 characters
+			'password'	  => 'required', // password can only be alphanumeric and has to be greater than 6 characters
+			'captcha'	  => 'required' // password can only be alphanumeric and has to be greater than 6 characters
 		);
 
 		// run the validation rules on the inputs from the form
@@ -102,6 +104,18 @@ class HomeController extends BaseController
 				'username' 	=> Input::get('username'),
 				'password' 	=> Input::get('password')
 			);
+
+			// $captcha = array(
+			// 	'captcha' 	=> Input::get('captcha'),
+			// 	'generated_captcha' 	=> Input::get('generated_captcha')
+			// );
+			if (Input::get('captcha') != Input::get('generated_captcha')) {
+				return Redirect::to('login')->withErrors('Captcha error');
+			}
+			// echo "<pre>" . print_r($alldata, true) . "</pre>";
+
+			// exit();
+
 			//var_dump($userdata); exit(); 
 			// attempt to do the login // Input::get('remember_me')
 
