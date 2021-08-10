@@ -164,7 +164,7 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">Server Details</h3>
+		<h3 class="panel-title">Server Data Transmission - IP Based</h3>
 	</div>
 	<div class="panel-body">
 		<form class="form-horizontal" role="form">
@@ -215,6 +215,70 @@
 						<p class="form-control-static">{{$summary->health_ip . ' (' . translateStatus($summary->health_en) . ')' }}</p>
 					</div>
 				</div> -->
+		</form>
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Server FTP Folder</h3>
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Server 1</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">{{$summary->server1_folder }}</p>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Server 2</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">{{$summary->server2_folder  }}</p>
+				</div>
+
+			</div>
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Server 3</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">{{$summary->server3_folder  }}</p>
+				</div>
+
+			</div>
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Server 4</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">{{$summary->server4_folder }}</p>
+				</div>
+
+			</div>
+			<!-- <div class="form-group">
+					<label for="inputTypeCode" class="col-sm-3 control-label">Health IP</label>
+					<div class="col-sm-5">
+						<p class="form-control-static">{{$summary->health_ip . ' (' . translateStatus($summary->health_en) . ')' }}</p>
+					</div>
+				</div> -->
+		</form>
+	</div>
+</div>
+
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Server Data Transmission - SMS</h3>
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Phone</label>
+				<div class="col-sm-3">
+					<p class="form-control-static">{{$summary->sms_server_no . ' (' . translateStatus($summary->sms_server_enabled) . ')' }}</p>
+				</div>
+
+			</div>
+
 		</form>
 	</div>
 </div>
@@ -341,6 +405,35 @@
 	</div>
 </div>
 
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Water Level Reading</h3>
+	</div>
+	<div class="panel-body">
+		<form class="form-horizontal" role="form">
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Datum</label>
+				<div class="col-sm-5">
+					<p class="form-control-static">{{$sensor_setting->as1_datum}} m</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Minimum</label>
+				<div class="col-sm-5">
+					<p class="form-control-static">{{$sensor_setting->as1_min}} m</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Maximum</label>
+				<div class="col-sm-5">
+					<p class="form-control-static">{{$sensor_setting->as1_max}} m</p>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
 <div class="modal fade btn-search" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -351,6 +444,7 @@
 				</h4>
 			</div>
 			<div class="modal-body">
+			<h5>The maximum data to download is one month.</h5>
 				{{ Form::open(["role" => "form", "class" => "form-horizontal", "id"=>"form_export", "name"=>"form_export", "url" => "admin/summary/export"]) }}
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Begin Date</label>
@@ -374,6 +468,7 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="form-group">
 					<label for="report_format1" class="col-sm-3 control-label">Report Format</label>
 					<fieldset id="report_format1" class="col-sm-5">

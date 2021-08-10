@@ -1,33 +1,36 @@
 <?php
 
-class AdminSummaryController extends \BaseController {
+class AdminSummaryController extends \BaseController
+{
 
-	public function __construct() {
-		$this->beforeFilter('csrf', array('on'=>'post'));
+	public function __construct()
+	{
+		$this->beforeFilter('csrf', array('on' => 'post'));
 		$this->beforeFilter('auth');
-		$this->beforeFilter('acl.permitted');		
-	}		
+		$this->beforeFilter('acl.permitted');
+	}
 
 	/**
 	 * Display a listing of the resource.
 	 *
 	 * @return Response
 	 */
-	public function index(){        
-        $summary = RtuConfig::where('idrut_config', 1)->first();
+	public function index()
+	{
+		$summary = RtuConfig::where('idrut_config', 1)->first();
 		$timelog = TimeLog::orderBy('LOG_DATE', 'desc')->orderBy('LOG_TIME', 'desc')->first();
 		$sms_no = SmsNo::where('idSMS_no', 1)->first();
 		$sensor_setting = SensorSetting::where('idSensor_setting', 1)->first();
-		
+
 		$server1 = TimeLog::where('server1_send', '1')->orderBy('dtstamp', 'desc')->first();
 		$server2 = TimeLog::where('server2_send', '1')->orderBy('dtstamp', 'desc')->first();
 		$server3 = TimeLog::where('server3_send', '1')->orderBy('dtstamp', 'desc')->first();
 		$server4 = TimeLog::where('server4_send', '1')->orderBy('dtstamp', 'desc')->first();
 		//$server1 = '';
 
-        $breadcrumbs = array('Info' => 'admin/summary' , 'Manage Info' => 'admin/summary');
+		$breadcrumbs = array('Info' => 'admin/summary', 'Manage Info' => 'admin/summary');
 
-		return View::make('admin.summary.index')->with('breadcrumbs',$breadcrumbs)->with('summary', $summary)->with('timelog', $timelog)->with('sms_no', $sms_no)->with('sensor_setting', $sensor_setting)->with('server1', $server1)->with('server2', $server2)->with('server3', $server3)->with('server4', $server4);
+		return View::make('admin.summary.index')->with('breadcrumbs', $breadcrumbs)->with('summary', $summary)->with('timelog', $timelog)->with('sms_no', $sms_no)->with('sensor_setting', $sensor_setting)->with('server1', $server1)->with('server2', $server2)->with('server3', $server3)->with('server4', $server4);
 	}
 
 
@@ -36,7 +39,8 @@ class AdminSummaryController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create(){
+	public function create()
+	{
 	}
 
 
@@ -45,7 +49,8 @@ class AdminSummaryController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store(){
+	public function store()
+	{
 	}
 
 
@@ -55,8 +60,8 @@ class AdminSummaryController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id){
-		
+	public function show($id)
+	{
 	}
 
 
@@ -66,15 +71,16 @@ class AdminSummaryController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id){
+	public function edit($id)
+	{
 		$summary = RtuConfig::where('idrut_config', 1)->first();
 		$timelog = TimeLog::orderBy('LOG_DATE', 'desc')->orderBy('LOG_TIME', 'desc')->first();
 		$sms_no = SmsNo::where('idSMS_no', 1)->first();
 		$sensor_setting = SensorSetting::where('idSensor_setting', 1)->first();
-		
-        $breadcrumbs = array('Info' => 'admin/summary' , 'Manage Info' => 'admin/summary');
 
-		return View::make('admin.summary.edit')->with('breadcrumbs',$breadcrumbs)->with('summary', $summary)->with('timelog', $timelog)->with('sms_no', $sms_no)->with('sensor_setting', $sensor_setting);
+		$breadcrumbs = array('Info' => 'admin/summary', 'Manage Info' => 'admin/summary');
+
+		return View::make('admin.summary.edit')->with('breadcrumbs', $breadcrumbs)->with('summary', $summary)->with('timelog', $timelog)->with('sms_no', $sms_no)->with('sensor_setting', $sensor_setting);
 	}
 
 
@@ -84,17 +90,18 @@ class AdminSummaryController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id){		
+	public function update($id)
+	{
 		// validate - read more on validation at http://laravel.com/docs/validation        
-        $rules = array(
+		$rules = array(
 			'Station_ID'	=> 'required|Max:80',
 			'Station_Name'	=> 'required|Max:80',
-			
+
 			// 'sam_H'			=> 'required|integer|max:23',
 			// 'sam_M'			=> 'required|integer|max:59',
 			// 'transfer_H'	=> 'required|integer|max:23',
 			// 'transfer_M'	=> 'required|integer|max:59',
-			
+
 			'server1_ip'	=> 'ip',
 			//'server1_user'	=> 'alpha_num',
 			'server2_ip'	=> 'ip',
@@ -105,7 +112,7 @@ class AdminSummaryController extends \BaseController {
 			//'server4_user'	=> 'alpha_num',
 			'health_ip'		=> 'ip',
 			//'health_user'	=> 'alpha_num',
-			
+
 			'SMS_01'	    => 'digits_between:10,11',
 			'SMS_02'	    => 'digits_between:10,11',
 			'SMS_03'	    => 'digits_between:10,11',
@@ -118,7 +125,7 @@ class AdminSummaryController extends \BaseController {
 			'SMS_10'	    => 'digits_between:10,11',
 			'SMS_11'	    => 'digits_between:10,11',
 			'SMS_12'	    => 'digits_between:10,11',
-			
+
 			'rf1_h'			=> 'required|integer|max:1000',
 			'rf1_vh'		=> 'required|integer|max:1000',
 
@@ -128,8 +135,8 @@ class AdminSummaryController extends \BaseController {
 		);
 
 		$messages["groups.required"]      = "Please select at least 1 group.";
-		$messages["brands.required"]      = "Please select at least 1 brand.";	        
-				
+		$messages["brands.required"]      = "Please select at least 1 brand.";
+
 		$validator = Validator::make(Input::all(), $rules, $messages);
 
 		// process the login
@@ -137,45 +144,53 @@ class AdminSummaryController extends \BaseController {
 			return Redirect::to('admin/summary/' . $id . '/edit')->withErrors($validator)->withInput(Input::except('password'));
 		} else {
 			// store //var_dump(Input::all()); exit();
-			
+
 			$summary = RtuConfig::where('idrut_config', 1)->first();
-			
+
 			$summary->Station_ID       	= Input::get('Station_ID');
 			$summary->Station_Name 		= Input::get('Station_Name');
 			// $summary->sam_H       		= Input::get('sam_H');
 			// $summary->sam_M 			= Input::get('sam_M');
 			// $summary->transfer_H       	= Input::get('transfer_H');
 			// $summary->transfer_M 		= Input::get('transfer_M');
-			
+
 			$summary->server1_enable	= (Input::has('server1_enable') == 'on' ? '1' : '0');
 			$summary->server1_ip       	= Input::get('server1_ip');
 			$summary->server1_user      = Input::get('server1_user');
 			$summary->server1_pass		= Input::get('server1_pass');
-			
+
 			$summary->server2_enable	= (Input::has('server2_enable') == 'on' ? '1' : '0');
 			$summary->server2_ip       	= Input::get('server2_ip');
 			$summary->server2_user      = Input::get('server2_user');
 			$summary->server2_pass		= Input::get('server2_pass');
-			
+
 			$summary->server3_enable	= (Input::has('server3_enable') == 'on' ? '1' : '0');
 			$summary->server3_ip       	= Input::get('server3_ip');
 			$summary->server3_user      = Input::get('server3_user');
 			$summary->server3_pass		= Input::get('server3_pass');
-			
+
 			$summary->server4_en		= (Input::has('server4_en') == 'on' ? '1' : '0');
 			$summary->server4_ip       	= Input::get('server4_ip');
 			$summary->server4_user      = Input::get('server4_user');
 			$summary->server4_pass		= Input::get('server4_pass');
-			
-			$summary->server1_enable	= (Input::has('server1_enable') == 'on' ? '1' : '0');
-			$summary->health_ip       	= Input::get('health_ip');
-			$summary->health_user       = Input::get('health_user');
-			$summary->health_pass		= Input::get('health_pass');
+
+			$summary->sms_server_enabled	= (Input::has('sms_server_enabled') == 'on' ? '1' : '0');
+			$summary->sms_server_no       	= Input::get('sms_server_no');
+
+			$summary->server1_folder       	= Input::get('server1_folder');
+			$summary->server2_folder       	= Input::get('server2_folder');
+			$summary->server3_folder       	= Input::get('server3_folder');
+			$summary->server4_folder       	= Input::get('server4_folder');
+
+			// $summary->server1_enable	= (Input::has('server1_enable') == 'on' ? '1' : '0');
+			// $summary->health_ip       	= Input::get('health_ip');
+			// $summary->health_user       = Input::get('health_user');
+			// $summary->health_pass		= Input::get('health_pass');
 
 			$summary->save();
-			
+
 			$sms_no = SmsNo::where('idSMS_no', 1)->first();
-			
+
 			$sms_no->SMS_01_en			= (Input::has('SMS_01_en') == 'on' ? '1' : '0');
 			$sms_no->SMS_01		       	= Input::get('SMS_01');
 			$sms_no->SMS_02_en			= (Input::has('SMS_02_en') == 'on' ? '1' : '0');
@@ -200,21 +215,25 @@ class AdminSummaryController extends \BaseController {
 			$sms_no->SMS_11		       	= Input::get('SMS_11');
 			$sms_no->SMS_12_en			= (Input::has('SMS_12_en') == 'on' ? '1' : '0');
 			$sms_no->SMS_12		       	= Input::get('SMS_12');
-			
+
 			$sms_no->save();
-						
+
 			$sensor_setting = SensorSetting::where('idSensor_setting', 1)->first();
-			
+
 			$sensor_setting->rf1_h       		= Input::get('rf1_h');
 			$sensor_setting->rf1_vh 			= Input::get('rf1_vh');
 
 			$sensor_setting->as1_A	 			= Input::get('as1_A');
 			$sensor_setting->as1_W 				= Input::get('as1_W');
 			$sensor_setting->as1_D 				= Input::get('as1_D');
-			
+
+			$sensor_setting->as1_datum	 			= Input::get('as1_datum');
+			$sensor_setting->as1_min 				= Input::get('as1_min');
+			$sensor_setting->as1_max 				= Input::get('as1_max');
+
 			$sensor_setting->save();
-            
-            // redirect
+
+			// redirect
 			Session::flash('message', 'Summary Updated');
 			return Redirect::to('admin/summary/');
 		}
@@ -227,31 +246,49 @@ class AdminSummaryController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id){
+	public function destroy($id)
+	{
 		//
 	}
-	
-	public function export(){ 
+
+	public function export()
+	{
 		$sort_by = "asc";
 		$data = array();
 		// validate		// read more on validation at http://laravel.com/docs/validation
 		$rules = array(
 			'begin_date'			=> 'required',
 			'end_date'				=> 'required'
-		);        
-        //var_dump(Input::all()); exit();
+		);
+		//var_dump(Input::all()); exit();
 		$validator = Validator::make(Input::all(), $rules);
-        
+
 		// process the login
 		if ($validator->fails()) {
 			return Redirect::to('admin/summary')->withErrors($validator)->withInput(Input::except('password'));
 		} else {
+
+			// $begin_date = "2007-03-24";
+			// $end_date = "2009-06-26";
+
+			$datediff = abs(strtotime($end_date) - strtotime($begin_date));
+
+			// $years = floor($diff / (365 * 60 * 60 * 24));
+			// $months = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+			// $days = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+
+			// printf("%d years, %d months, %d days\n", $years, $months, $days);
+			$days = round($datediff / (60 * 60 * 24));
+			if($days > 31)
+				return Redirect::to('admin/summary')->withErrors('Exceed no of allowable days: '.$days);
+
+
 			//var_dump(Input::all()); //exit();
 			$report_date 		= date("Y-m-d 00:00:00", time());
-			
+
 			$begin_date       	= Input::get('begin_date');
 			$end_date       	= Input::get('end_date');
-					
+
 			$summary 			= RtuConfig::where('idrut_config', 1)->first();
 			//var_dump($summary); exit();
 			$Station_ID			= $summary->Station_ID;
@@ -265,16 +302,16 @@ class AdminSummaryController extends \BaseController {
 			$WL_Danger			= $summary->WL_Danger;
 			$SMS_1				= $summary->SMS_1;
 			$SMS_2				= $summary->SMS_2;
-			
+
 			$report_format      = Input::get('report_format');
-			
-			set_time_limit(0); 
+
+			set_time_limit(0);
 			ini_set('memory_limit', '512M');
-			
-			if($report_format=="ftp"){
+
+			if ($report_format == "ftp") {
 				$timelogs			= TimeLog::where('LOG_DATE', '>=', $begin_date)->where('LOG_DATE', '<=', $end_date)->orderBy('LOG_DATE', $sort_by)->orderBy('LOG_TIME', $sort_by)->get();
 				//var_dump($timelogs); exit();
-				
+
 				$inventory_rtu 		= InventoryRtu::where('id', 1)->first();
 				//var_dump($inventory_rtu); exit();
 				$Legacy_ID			= $inventory_rtu->Legacy_ID;
@@ -301,7 +338,7 @@ class AdminSummaryController extends \BaseController {
 				$WQ8_ID				= $inventory_rtu->WQ8_ID;
 				$Lat				= $inventory_rtu->Lat;
 				$Long				= $inventory_rtu->Long;
-				
+
 				/*
 				$data[] = array("start", "Station ID", "Station ID Legacy", "RTU ID", "Station Date Time", "Station Status", "Battery Voltage", "GSM Comm Signal Strength", "Satellite Signal Strength", 
 								"internal battery voltage", "solar output", "siren alert threshold", "siren danger threshold", "rainfall alert threshold", "rainfall danger threshold", 
@@ -316,7 +353,7 @@ class AdminSummaryController extends \BaseController {
 								"water quality id5", "water quality para5", "water quality id6", "water quality para6", "water quality id7", "water quality para7", "water quality id8", 
 								"water quality para8", "water quality para9", "latitude", "longitude", "end");
 				*/
-				
+
 				$satellite_signal_strength 		= 0;
 				$siren_code 					= "";
 				$flow_sensor_para1				= 0;
@@ -348,14 +385,16 @@ class AdminSummaryController extends \BaseController {
 
 				foreach ($timelogs as $timelog) {
 					//var_dump($timelog); exit();
-					$data[] = array("$", $Station_ID, $Legacy_ID, $serial_no, date("ymd", strtotime($timelog->LOG_DATE)).date("His", strtotime($timelog->LOG_TIME)), 
-									$timelog->alarm_status, $timelog->Bat_Voltage, $timelog->GSM_Sig, $satellite_signal_strength, $timelog->Int_Bat, $timelog->Solar_voltage, $SR_Alert, $SR_Danger, $timelog->Set_RF_H,
-									$timelog->Set_RF_VH, $timelog->Set_WL_A, $timelog->Set_WL_W, $timelog->Set_WL_D, $Siren_ID, $siren_code, $RF_ID, $timelog->RF1_YEARLY, $timelog->RF1_DAILY,
-									$timelog->last1h, $timelog->last2h, $timelog->last3h, $timelog->last4h, $timelog->last5h, $timelog->last6h, $timelog->last7h, $timelog->last8h, $timelog->last9h, $timelog->last10h, $timelog->last11h, $timelog->last12h, 
-									$WL1_ID, $timelog->AI1, $WL2_ID, $timelog->AI2, $SF1_ID, $flow_sensor_para1, $flow_sensor_para2, $flow_sensor_para3, $flow_sensor_para4, $SMS_1, $SMS_2, 
-									$EP_ID, $evaporation, $evaporation_daily_accumulative, $SM_ID, $soil_moisture, $soil_temperature, $WS_ID, $wind_speed, $wind_direction, $AT_ID, $air_temperature, $RH_ID, $relative_humidity, $RD_ID, $radiation, $net_radiation, 
-									$SH_ID, $sunshine_hours, $SP_ID, $surface_pressure, $WQ1_ID, $water_quality_para0, $WQ2_ID, $water_quality_para1, $water_quality_para2, $WQ3_ID, $water_quality_para3, $WQ4_ID, $water_quality_para4, 
-									$WQ5_ID, $water_quality_para5, $WQ6_ID, $water_quality_para6, $WQ7_ID, $water_quality_para7, $WQ8_ID, $water_quality_para8, $water_quality_para9, $timelog->gps_lat, $timelog->gps_long, "*");
+					$data[] = array(
+						"$", $Station_ID, $Legacy_ID, $serial_no, date("ymd", strtotime($timelog->LOG_DATE)) . date("His", strtotime($timelog->LOG_TIME)),
+						$timelog->alarm_status, $timelog->Bat_Voltage, $timelog->GSM_Sig, $satellite_signal_strength, $timelog->Int_Bat, $timelog->Solar_voltage, $SR_Alert, $SR_Danger, $timelog->Set_RF_H,
+						$timelog->Set_RF_VH, $timelog->Set_WL_A, $timelog->Set_WL_W, $timelog->Set_WL_D, $Siren_ID, $siren_code, $RF_ID, $timelog->RF1_YEARLY, $timelog->RF1_DAILY,
+						$timelog->last1h, $timelog->last2h, $timelog->last3h, $timelog->last4h, $timelog->last5h, $timelog->last6h, $timelog->last7h, $timelog->last8h, $timelog->last9h, $timelog->last10h, $timelog->last11h, $timelog->last12h,
+						$WL1_ID, $timelog->AI1, $WL2_ID, $timelog->AI2, $SF1_ID, $flow_sensor_para1, $flow_sensor_para2, $flow_sensor_para3, $flow_sensor_para4, $SMS_1, $SMS_2,
+						$EP_ID, $evaporation, $evaporation_daily_accumulative, $SM_ID, $soil_moisture, $soil_temperature, $WS_ID, $wind_speed, $wind_direction, $AT_ID, $air_temperature, $RH_ID, $relative_humidity, $RD_ID, $radiation, $net_radiation,
+						$SH_ID, $sunshine_hours, $SP_ID, $surface_pressure, $WQ1_ID, $water_quality_para0, $WQ2_ID, $water_quality_para1, $water_quality_para2, $WQ3_ID, $water_quality_para3, $WQ4_ID, $water_quality_para4,
+						$WQ5_ID, $water_quality_para5, $WQ6_ID, $water_quality_para6, $WQ7_ID, $water_quality_para7, $WQ8_ID, $water_quality_para8, $water_quality_para9, $timelog->gps_lat, $timelog->gps_long, "*"
+					);
 					//echo "<pre>".print_r($data,true)."</pre>"; exit();
 				}
 				//echo "<pre>".print_r($data,true)."</pre>"; exit();
@@ -366,13 +405,13 @@ class AdminSummaryController extends \BaseController {
 					});
 				})->download('xlsx');
 				*/
-				$filename=date("ymdHis")."_".Input::get('report_format')."_".Input::get('begin_date')."_".Input::get('end_date').".csv";
+				$filename = date("ymdHis") . "_" . Input::get('report_format') . "_" . Input::get('begin_date') . "_" . Input::get('end_date') . ".csv";
 				//$file_path=storage_path(). "\\reports"."\\".Input::get('report_format')."\\".$filename;
-				$file_path=storage_path(). DIRECTORY_SEPARATOR ."reports". DIRECTORY_SEPARATOR .Input::get('report_format'). DIRECTORY_SEPARATOR .$filename;
+				$file_path = storage_path() . DIRECTORY_SEPARATOR . "reports" . DIRECTORY_SEPARATOR . Input::get('report_format') . DIRECTORY_SEPARATOR . $filename;
 				//echo "<pre>".print_r($file_path,true)."</pre>"; exit();
-				$handle = fopen($file_path,"w+");
+				$handle = fopen($file_path, "w+");
 				//fputcsv($handle, array('date'));
-				foreach($data as $line) {
+				foreach ($data as $line) {
 					fputcsv($handle, $line);
 				}
 
@@ -384,13 +423,13 @@ class AdminSummaryController extends \BaseController {
 
 				return Response::download($file_path, $filename, $headers);
 			}
-			
-			if($report_format=="tideda"){
+
+			if ($report_format == "tideda") {
 				$tideda_rf1			= TidedaRf1::where('tideda_Date', '>=', $begin_date)->where('tideda_Date', '<=', $end_date)->orderBy('tideda_Date', $sort_by)->orderBy('tideda_Date', $sort_by)->get();
-				
-				$filename=date("ymdHis")."_".Input::get('report_format')."_".Input::get('begin_date')."_".Input::get('end_date').".txt";
+
+				$filename = date("ymdHis") . "_" . Input::get('report_format') . "_" . Input::get('begin_date') . "_" . Input::get('end_date') . ".txt";
 				//$file_path=storage_path(). "\\reports"."\\".Input::get('report_format')."\\".$filename;
-				$file_path=storage_path(). DIRECTORY_SEPARATOR ."reports". DIRECTORY_SEPARATOR .Input::get('report_format').DIRECTORY_SEPARATOR .$filename;
+				$file_path = storage_path() . DIRECTORY_SEPARATOR . "reports" . DIRECTORY_SEPARATOR . Input::get('report_format') . DIRECTORY_SEPARATOR . $filename;
 				//echo "<pre>".print_r($file_path,true)."</pre>"; exit();
 				/*
 				$handle = fopen($file_path,"w+");
@@ -407,17 +446,17 @@ class AdminSummaryController extends \BaseController {
 				}
 				fclose($handle);
 				*/
-								
+
 				file_put_contents($file_path, "~~~ NIWA TIDEDA ~~~ JPS \n", FILE_APPEND | LOCK_EX);
 				file_put_contents($file_path, "~~~ LIST ~~~\n", FILE_APPEND | LOCK_EX);
-				file_put_contents($file_path, "Source is Site at ".$Station_ID. " \n", FILE_APPEND | LOCK_EX);
-				file_put_contents($file_path, "1 Item INCREMENTAL From ".date("m/d/Y",strtotime(Input::get('begin_date')))." to ".date("m/d/Y",strtotime(Input::get('end_date')))." \n", FILE_APPEND | LOCK_EX);
+				file_put_contents($file_path, "Source is Site at " . $Station_ID . " \n", FILE_APPEND | LOCK_EX);
+				file_put_contents($file_path, "1 Item INCREMENTAL From " . date("m/d/Y", strtotime(Input::get('begin_date'))) . " to " . date("m/d/Y", strtotime(Input::get('end_date'))) . " \n", FILE_APPEND | LOCK_EX);
 				file_put_contents($file_path, "	Rain	Date		Time\n", FILE_APPEND | LOCK_EX);
 				//echo "<pre>".print_r($tideda_rf1,true)."</pre>"; exit();
-				foreach($tideda_rf1 as $tideda=>$line) {
+				foreach ($tideda_rf1 as $tideda => $line) {
 					//echo "<pre>".print_r($line,true)."</pre>"; 
-					file_put_contents($file_path, "	5	".date("ymd",strtotime($line->tideda_Date))."		".date("His",strtotime($line->tideda_Time))." \n", FILE_APPEND | LOCK_EX);
-				}//exit();
+					file_put_contents($file_path, "	5	" . date("ymd", strtotime($line->tideda_Date)) . "		" . date("His", strtotime($line->tideda_Time)) . " \n", FILE_APPEND | LOCK_EX);
+				} //exit();
 
 				$headers = array(
 					'Content-Type' => 'text/txt',
@@ -425,7 +464,7 @@ class AdminSummaryController extends \BaseController {
 
 				return Response::download($file_path, $filename, $headers);
 			}
-			
+
 			/*
 			Excel::create("Report ".$station_ids." ".date(Input::get('report_date')), function($excel) use($sum_phg_pdsa){
 				$excel->sheet(date(Input::get('report_date')), function($sheet) use($sum_phg_pdsa){
@@ -555,17 +594,16 @@ class AdminSummaryController extends \BaseController {
 				});
 			})->download('xlsx');
 			*/
-			
+
 			$timelog 			= TimeLog::orderBy('LOG_DATE', 'desc')->orderBy('LOG_TIME', 'desc')->first();
 			$sms_no 			= SmsNo::where('idSMS_no', 1)->first();
 			$sensor_setting 	= SensorSetting::where('idSensor_setting', 1)->first();
-			
+
 			Session::flash('message', 'Download failed. Kindly select the correct format.');
-			
-			$breadcrumbs = array('Summary' => 'admin/summary' , 'Manage Summary' => 'admin/summary');
-			
-			return View::make('admin.summary.index')->with('breadcrumbs',$breadcrumbs)->with('summary', $summary)->with('timelog', $timelog)->with('sms_no', $sms_no)->with('sensor_setting', $sensor_setting);
+
+			$breadcrumbs = array('Summary' => 'admin/summary', 'Manage Summary' => 'admin/summary');
+
+			return View::make('admin.summary.index')->with('breadcrumbs', $breadcrumbs)->with('summary', $summary)->with('timelog', $timelog)->with('sms_no', $sms_no)->with('sensor_setting', $sensor_setting);
 		}
 	}
-
 }
