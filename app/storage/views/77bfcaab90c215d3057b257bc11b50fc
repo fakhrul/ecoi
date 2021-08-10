@@ -133,6 +133,42 @@
 							<?php endif; ?>
 				</div>
 			</div>
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Sampling</label>
+				<div class="col-sm-5">
+					<?php if ($summary->sam_M == 0): ?>
+					<p class="form-control-static">1 minute</p>
+					<?php elseif($summary->sam_M == 1): ?>
+					<p class="form-control-static">5 minutes</p>
+					<?php elseif($summary->sam_M == 2): ?>
+					<p class="form-control-static">15 minutes</p>
+					<?php elseif($summary->sam_M == 3): ?>
+					<p class="form-control-static">30 minutes</p>
+					<?php elseif($summary->sam_M == 4): ?>
+					<p class="form-control-static">60 minutes</p>
+					<?php else: ?>
+					<p class="form-control-static"><?php echo $summary->sam_M; ?> minute(s)</p>
+					<?php endif; ?>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Transfer</label>
+				<div class="col-sm-5">
+					<?php if ($summary->transfer_M == 0): ?>
+					<p class="form-control-static">1 minute</p>
+					<?php elseif($summary->transfer_M == 1): ?>
+					<p class="form-control-static">5 minutes</p>
+					<?php elseif($summary->transfer_M == 2): ?>
+					<p class="form-control-static">15 minutes</p>
+					<?php elseif($summary->transfer_M == 3): ?>
+					<p class="form-control-static">30 minutes</p>
+					<?php elseif($summary->transfer_M == 4): ?>
+					<p class="form-control-static">60 minutes</p>
+					<?php else: ?>
+					<p class="form-control-static"><?php echo $summary->transfer_M; ?> minute(s)</p>
+					<?php endif; ?>
+				</div>
+			</div>
 			<!-- <div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Sampling</label>
 				<div class="col-sm-5">
@@ -145,7 +181,7 @@
 					<p class="form-control-static"><?php echo $summary->transfer_H; ?> hour(s) <?php echo $summary->transfer_M; ?> minute(s)</p>
 				</div>
 			</div> -->
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Sampling</label>
 				<div class="col-sm-5">
 					<p class="form-control-static">5 minute(s)</p>
@@ -156,7 +192,7 @@
 				<div class="col-sm-5">
 					<p class="form-control-static">15 minute(s)</p>
 				</div>
-			</div>
+			</div> -->
 		</form>
 	</div>
 </div>
@@ -443,7 +479,7 @@
 				</h4>
 			</div>
 			<div class="modal-body">
-			<h5>The maximum data to download is one month.</h5>
+				<h5>The maximum data to download is one month.</h5>
 				<?php echo Form::open(["role" => "form", "class" => "form-horizontal", "id"=>"form_export", "name"=>"form_export", "url" => "admin/summary/export"]); ?>
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Begin Date</label>

@@ -93,20 +93,21 @@
 			</div>
 		</div>
 
-		<!-- <div class="form-group">
+		<div class="form-group">
 				<?php echo Form::label('sampling', 'Sampling', array('class' => 'col-sm-2 control-label')); ?>
-				<div class="col-sm-3">
+				<!-- <div class="col-sm-3">
 					<div class="input-group">
 						<?php echo Form::text('sam_H', Input::old('sam_H'), array('class' => 'form-control', 'id' => 'BI16')); ?> 	
 						<span class="input-group-addon">Hours</span>
 					</div>
 				 </div>	
 				 
-				 <div class="col-sm-2"></div>	
+				 <div class="col-sm-2"></div>	 -->
 				 
 				 <div class="col-sm-3">
 					<div class="input-group">
-						<?php echo Form::text('sam_M', Input::old('sam_M'), array('class' => 'form-control')); ?>
+					<?php echo Form::select('sam_M', array('0' => '1', '1' => '5', '2' => '15', '3' => '30', '4' => '60'),  Input::old('sam_M'), array('class' => 'form-control')); ?>
+						<!-- <?php echo Form::text('sam_M', Input::old('sam_M'), array('class' => 'form-control')); ?> -->
 						<span class="input-group-addon">Minutes</span>
 					</div>
 				 </div>	
@@ -114,22 +115,23 @@
 			
 			<div class="form-group">
 				<?php echo Form::label('transfer', 'Transfer', array('class' => 'col-sm-2 control-label')); ?>
-				<div class="col-sm-3">
+				<!-- <div class="col-sm-3">
 					<div class="input-group">
 						<?php echo Form::text('transfer_H', Input::old('transfer_H'), array('class' => 'form-control')); ?>
 						<span class="input-group-addon">Hours</span>
 					</div>
 				 </div>	
 				 
-				 <div class="col-sm-2"></div>	
+				 <div class="col-sm-2"></div>	 -->
 				 
 				 <div class="col-sm-3">
 					<div class="input-group">
-						<?php echo Form::text('transfer_M', Input::old('transfer_M'), array('class' => 'form-control')); ?>
+					<?php echo Form::select('transfer_M', array('0' => '1', '1' => '5', '2' => '15', '3' => '30', '4' => '60'), Input::old('transfer_M'), array('class' => 'form-control')); ?>
+						<!-- <?php echo Form::text('transfer_M', Input::old('transfer_M'), array('class' => 'form-control')); ?> -->
 						<span class="input-group-addon">Minutes</span>
 					</div>
 				 </div>	
-			</div> -->
+			</div>
 	</div>
 </div>
 

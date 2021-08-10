@@ -134,6 +134,42 @@
 							@endif
 				</div>
 			</div>
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Sampling</label>
+				<div class="col-sm-5">
+					@if ($summary->sam_M == 0)
+					<p class="form-control-static">1 minute</p>
+					@elseif($summary->sam_M == 1)
+					<p class="form-control-static">5 minutes</p>
+					@elseif($summary->sam_M == 2)
+					<p class="form-control-static">15 minutes</p>
+					@elseif($summary->sam_M == 3)
+					<p class="form-control-static">30 minutes</p>
+					@elseif($summary->sam_M == 4)
+					<p class="form-control-static">60 minutes</p>
+					@else
+					<p class="form-control-static">{{$summary->sam_M}} minute(s)</p>
+					@endif
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputTypeCode" class="col-sm-3 control-label">Transfer</label>
+				<div class="col-sm-5">
+					@if ($summary->transfer_M == 0)
+					<p class="form-control-static">1 minute</p>
+					@elseif($summary->transfer_M == 1)
+					<p class="form-control-static">5 minutes</p>
+					@elseif($summary->transfer_M == 2)
+					<p class="form-control-static">15 minutes</p>
+					@elseif($summary->transfer_M == 3)
+					<p class="form-control-static">30 minutes</p>
+					@elseif($summary->transfer_M == 4)
+					<p class="form-control-static">60 minutes</p>
+					@else
+					<p class="form-control-static">{{$summary->transfer_M}} minute(s)</p>
+					@endif
+				</div>
+			</div>
 			<!-- <div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Sampling</label>
 				<div class="col-sm-5">
@@ -146,7 +182,7 @@
 					<p class="form-control-static">{{$summary->transfer_H}} hour(s) {{$summary->transfer_M}} minute(s)</p>
 				</div>
 			</div> -->
-			<div class="form-group">
+			<!-- <div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Sampling</label>
 				<div class="col-sm-5">
 					<p class="form-control-static">5 minute(s)</p>
@@ -157,7 +193,7 @@
 				<div class="col-sm-5">
 					<p class="form-control-static">15 minute(s)</p>
 				</div>
-			</div>
+			</div> -->
 		</form>
 	</div>
 </div>
@@ -236,14 +272,14 @@
 			<div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Server 2</label>
 				<div class="col-sm-3">
-					<p class="form-control-static">{{$summary->server2_folder  }}</p>
+					<p class="form-control-static">{{$summary->server2_folder }}</p>
 				</div>
 
 			</div>
 			<div class="form-group">
 				<label for="inputTypeCode" class="col-sm-3 control-label">Server 3</label>
 				<div class="col-sm-3">
-					<p class="form-control-static">{{$summary->server3_folder  }}</p>
+					<p class="form-control-static">{{$summary->server3_folder }}</p>
 				</div>
 
 			</div>
@@ -444,7 +480,7 @@
 				</h4>
 			</div>
 			<div class="modal-body">
-			<h5>The maximum data to download is one month.</h5>
+				<h5>The maximum data to download is one month.</h5>
 				{{ Form::open(["role" => "form", "class" => "form-horizontal", "id"=>"form_export", "name"=>"form_export", "url" => "admin/summary/export"]) }}
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Begin Date</label>
