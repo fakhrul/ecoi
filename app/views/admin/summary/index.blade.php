@@ -480,7 +480,7 @@
 				</h4>
 			</div>
 			<div class="modal-body">
-				<h5>The maximum data to download is one month.</h5>
+				<h5 style="color: red;">The maximum data to download is one month.</h5>
 				{{ Form::open(["role" => "form", "class" => "form-horizontal", "id"=>"form_export", "name"=>"form_export", "url" => "admin/summary/export"]) }}
 				<div class="form-group">
 					<label class="col-sm-3 control-label">Begin Date</label>

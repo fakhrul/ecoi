@@ -1,0 +1,5 @@
+~~~ NIWA TIDEDA ~~~ JPS 
+~~~ LIST ~~~
+Source is Site at MTES0001 
+1 Item INCREMENTAL From 08/09/2021 to 08/15/2021 
+	Rain	Date		Time

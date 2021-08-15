@@ -268,8 +268,8 @@ class AdminSummaryController extends \BaseController
 			return Redirect::to('admin/summary')->withErrors($validator)->withInput(Input::except('password'));
 		} else {
 
-			// $begin_date = "2007-03-24";
-			// $end_date = "2009-06-26";
+			$begin_date = Input::get('begin_date');
+			$end_date = Input::get('end_date');
 
 			$datediff = abs(strtotime($end_date) - strtotime($begin_date));
 
@@ -279,15 +279,15 @@ class AdminSummaryController extends \BaseController
 
 			// printf("%d years, %d months, %d days\n", $years, $months, $days);
 			$days = round($datediff / (60 * 60 * 24));
-			if($days > 31)
-				return Redirect::to('admin/summary')->withErrors('Exceed no of allowable days: '.$days);
+			if ($days > 31)
+				return Redirect::to('admin/summary')->withErrors('Exceed no of allowable days: ' . $days);
 
 
 			//var_dump(Input::all()); //exit();
 			$report_date 		= date("Y-m-d 00:00:00", time());
 
-			$begin_date       	= Input::get('begin_date');
-			$end_date       	= Input::get('end_date');
+			// $begin_date       	= Input::get('begin_date');
+			// $end_date       	= Input::get('begin_date');
 
 			$summary 			= RtuConfig::where('idrut_config', 1)->first();
 			//var_dump($summary); exit();
@@ -304,6 +304,7 @@ class AdminSummaryController extends \BaseController
 			$SMS_2				= $summary->SMS_2;
 
 			$report_format      = Input::get('report_format');
+
 
 			set_time_limit(0);
 			ini_set('memory_limit', '512M');
@@ -425,6 +426,8 @@ class AdminSummaryController extends \BaseController
 			}
 
 			if ($report_format == "tideda") {
+
+
 				$tideda_rf1			= TidedaRf1::where('tideda_Date', '>=', $begin_date)->where('tideda_Date', '<=', $end_date)->orderBy('tideda_Date', $sort_by)->orderBy('tideda_Date', $sort_by)->get();
 
 				$filename = date("ymdHis") . "_" . Input::get('report_format') . "_" . Input::get('begin_date') . "_" . Input::get('end_date') . ".txt";
@@ -446,17 +449,33 @@ class AdminSummaryController extends \BaseController
 				}
 				fclose($handle);
 				*/
+				// echo "<pre>" . print_r('test', true) . "</pre>";
+				// echo "<pre>" . print_r($file_path, true) . "</pre>";
+				// exit();
 
-				file_put_contents($file_path, "~~~ NIWA TIDEDA ~~~ JPS \n", FILE_APPEND | LOCK_EX);
-				file_put_contents($file_path, "~~~ LIST ~~~\n", FILE_APPEND | LOCK_EX);
-				file_put_contents($file_path, "Source is Site at " . $Station_ID . " \n", FILE_APPEND | LOCK_EX);
-				file_put_contents($file_path, "1 Item INCREMENTAL From " . date("m/d/Y", strtotime(Input::get('begin_date'))) . " to " . date("m/d/Y", strtotime(Input::get('end_date'))) . " \n", FILE_APPEND | LOCK_EX);
-				file_put_contents($file_path, "	Rain	Date		Time\n", FILE_APPEND | LOCK_EX);
-				//echo "<pre>".print_r($tideda_rf1,true)."</pre>"; exit();
-				foreach ($tideda_rf1 as $tideda => $line) {
-					//echo "<pre>".print_r($line,true)."</pre>"; 
-					file_put_contents($file_path, "	5	" . date("ymd", strtotime($line->tideda_Date)) . "		" . date("His", strtotime($line->tideda_Time)) . " \n", FILE_APPEND | LOCK_EX);
-				} //exit();
+				try {
+					file_put_contents($file_path, "~~~ NIWA TIDEDA ~~~ JPS \n", FILE_APPEND | LOCK_EX);
+
+					// echo "<pre>" . print_r('a', true) . "</pre>";
+					// exit();
+
+					file_put_contents($file_path, "~~~ LIST ~~~\n", FILE_APPEND | LOCK_EX);
+					file_put_contents($file_path, "Source is Site at " . $Station_ID . " \n", FILE_APPEND | LOCK_EX);
+					file_put_contents($file_path, "1 Item INCREMENTAL From " . date("m/d/Y", strtotime(Input::get('begin_date'))) . " to " . date("m/d/Y", strtotime(Input::get('end_date'))) . " \n", FILE_APPEND | LOCK_EX);
+					file_put_contents($file_path, "	Rain	Date		Time\n", FILE_APPEND | LOCK_EX);
+
+					// echo "<pre>" . print_r('a', true) . "</pre>";
+					// exit();
+
+					foreach ($tideda_rf1 as $tideda => $line) {
+						//echo "<pre>".print_r($line,true)."</pre>"; 
+						file_put_contents($file_path, "	5	" . date("ymd", strtotime($line->tideda_Date)) . "		" . date("His", strtotime($line->tideda_Time)) . " \n", FILE_APPEND | LOCK_EX);
+					} //exit();
+				} catch (Exception $e) {
+					echo 'Caught exception: ',  $e->getMessage(), "\n";
+				}
+
+
 
 				$headers = array(
 					'Content-Type' => 'text/txt',

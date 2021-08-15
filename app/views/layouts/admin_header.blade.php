@@ -89,9 +89,9 @@
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                     <h4 class="modal-title" id="myModalLabel"><span class="glyphicon glyphicon-user"></span> {{Auth::user()->username}}</h4>
                 </div>
-                <div class="modal-body">
+                <!-- <div class="modal-body">
                     <a href="{{ URL::to('admin/profile/edit') }}">Edit Profile</a><br>
-                </div>
+                </div> -->
                 <div class="modal-footer">
                     <a type="button" class="btn btn-primary" href="{{ URL::to('logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a>
                 </div>
