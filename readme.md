@@ -1,4 +1,4 @@
-# Environment
+# Dev Environment (Windows)
 - Use XAMPP with PHP version 5.4.4. Download [here](https://jaist.dl.sourceforge.net/project/xampp/XAMPP%20Windows/5.5.19/xampp-win32-5.5.19-0-VC11-installer.exe)
 - git clone this project in C:\xampp\htdocs
 
@@ -38,3 +38,29 @@ ecoi user password
 Usernamr : ###
 Password : ###
 ````
+
+# Deployment On Raspbery Pi
+
+## Install PHP version 5.6
+````
+sudo apt install php5.6
+````
+## Troubleshoot
+1. Raspberry Pi priviledge
+````
+sudo chown pi:www-data /var/www/html
+sudo chmod 755 /var/www/html
+````
+2. Remove PHP
+````
+sudo apt-get purge 'php*'
+````
+3. Install MCrypt
+````
+install mcrypt
+sudo apt-get install php5.6-mcrypt
+
+check mycrypt
+php -i | grep "mcrypt"
+````
+
