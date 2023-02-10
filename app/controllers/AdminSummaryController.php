@@ -482,6 +482,35 @@ class AdminSummaryController extends \BaseController
 				);
 
 				return Response::download($file_path, $filename, $headers);
+			} else if ($report_format == "dailyRF") {
+
+				$timelogs			= TimeLog::where('LOG_DATE', '>=', $begin_date)->where('LOG_DATE', '<=', $end_date)->orderBy('LOG_DATE', $sort_by)->orderBy('LOG_TIME', $sort_by)->get();
+				$counter=1;
+				foreach ($timelogs as $timelog) {
+					//var_dump($timelog); exit();
+					$data[] = array(
+						$counter, date("y/m/d", strtotime($timelog->LOG_DATE)) ." ". date("H:i:s", strtotime($timelog->LOG_TIME)),$timelog->RF1_DAILY
+					);
+					$counter++;
+				}
+				$filename = date("ymdHis") . "_" . Input::get('report_format') . "_" . Input::get('begin_date') . "_" . Input::get('end_date') . ".csv";
+				//$file_path=storage_path(). "\\reports"."\\".Input::get('report_format')."\\".$filename;
+				$file_path = storage_path() . DIRECTORY_SEPARATOR . "reports" . DIRECTORY_SEPARATOR . Input::get('report_format') . DIRECTORY_SEPARATOR . $filename;
+				echo "<pre>".print_r($file_path,true)."</pre>"; exit();
+				$handle = fopen($file_path, "w+");
+				//fputcsv($handle, array('date'));
+				foreach ($data as $line) {
+					fputcsv($handle, $line);
+				}
+
+				fclose($handle);
+
+				$headers = array(
+					'Content-Type' => 'text/csv',
+				);
+
+				return Response::download($file_path, $filename, $headers);
+
 			}
 
 			/*

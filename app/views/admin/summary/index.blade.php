@@ -514,6 +514,9 @@
 						<label class="radio-inline">
 							{{ Form::radio('report_format', 'tideda', true) }} TIDEDA
 						</label>
+						<label class="radio-inline">
+							{{ Form::radio('report_format', 'dailyRF', false) }} Daily RF
+						</label>
 					</fieldset>
 				</div>
 				<div class="form-group">
